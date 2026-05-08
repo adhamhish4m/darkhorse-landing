@@ -52,12 +52,12 @@ export function Hero() {
 
       {/* right-meta strip */}
       <div
-        className="absolute z-10 top-8 right-8 lg:right-14 text-right font-mono text-[12px] tracking-[0.18em] uppercase text-ivory/65 leading-[2] hidden lg:block"
+        className="absolute z-10 top-10 right-8 lg:right-14 text-right font-display italic lowercase text-ivory/75 leading-[1.5] tracking-[-0.005em] hidden lg:block"
         aria-hidden
       >
-        <div className="fade-in-up" style={{ animationDelay: '0.05s' }}>PAY-PER-LEAD</div>
-        <div className="fade-in-up" style={{ animationDelay: '0.15s' }}>FOUNDER-LED</div>
-        <div className="fade-in-up text-champagne" style={{ animationDelay: '0.25s' }}>HUMAN, NOT AI</div>
+        <div className="text-[20px] fade-in-up" style={{ animationDelay: '0.05s' }}>pay-per-lead.</div>
+        <div className="text-[20px] fade-in-up" style={{ animationDelay: '0.15s' }}>founder-led.</div>
+        <div className="text-[20px] fade-in-up text-champagne" style={{ animationDelay: '0.25s' }}>human, not ai.</div>
       </div>
 
       {/* content (bottom-left) */}
