@@ -3,23 +3,15 @@
   <defs>
     <style type="text/css"><![CDATA[
       @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&display=swap');
-      .wordmark {
+      text {
         font-family: 'Cormorant Garamond', 'Times New Roman', serif;
         font-style: italic;
         font-weight: 500;
-        font-size: 200px;
         letter-spacing: -2px;
         fill: #f4f1ec;
       }
-      .dot {
-        font-family: 'Cormorant Garamond', 'Times New Roman', serif;
-        font-style: italic;
-        font-weight: 500;
-        font-size: 320px;
-        fill: #c9a96e;
-      }
+      .dot { fill: #c9a96e; }
     ]]></style>
   </defs>
-  <text class="wordmark" x="40" y="180">lead thirteen</text>
-  <text class="dot" x="990" y="200">.</text>
+  <text x="600" y="170" font-size="200" text-anchor="middle">lead thirteen<tspan class="dot" font-size="320" dx="-25">.</tspan></text>
 </svg>

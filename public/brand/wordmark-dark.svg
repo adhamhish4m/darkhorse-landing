@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 240" width="1200" height="240">
   <defs>
+    <radialGradient id="wash" cx="70%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#9d6add" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#9d6add" stop-opacity="0"/>
+    </radialGradient>
     <style type="text/css"><![CDATA[
       @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&display=swap');
-      .wordmark {
+      text {
         font-family: 'Cormorant Garamond', 'Times New Roman', serif;
         font-style: italic;
         font-weight: 500;
-        font-size: 200px;
         letter-spacing: -2px;
         fill: #f4f1ec;
       }
-      .dot {
-        font-family: 'Cormorant Garamond', 'Times New Roman', serif;
-        font-style: italic;
-        font-weight: 500;
-        font-size: 320px;
-        fill: #c9a96e;
-      }
+      .dot { fill: #c9a96e; }
     ]]></style>
   </defs>
   <rect width="1200" height="240" fill="#0c0a10"/>
-  <text class="wordmark" x="40" y="180">lead thirteen</text>
-  <text class="dot" x="990" y="200">.</text>
+  <rect width="1200" height="240" fill="url(#wash)"/>
+  <text x="600" y="170" font-size="200" text-anchor="middle">lead thirteen<tspan class="dot" font-size="320" dx="-25">.</tspan></text>
 </svg>
