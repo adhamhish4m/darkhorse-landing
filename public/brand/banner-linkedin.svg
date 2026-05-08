@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" width="1584" height="396">
+  <defs>
+    <radialGradient id="wash" cx="80%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#9d6add" stop-opacity="0.20"/>
+      <stop offset="60%" stop-color="#9d6add" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9d6add" stop-opacity="0.18"/>
+      <stop offset="70%" stop-color="#9d6add" stop-opacity="0"/>
+    </radialGradient>
+    <style type="text/css"><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Inter:wght@500&display=swap');
+      .word {
+        font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+        font-style: italic;
+        font-weight: 500;
+        font-size: 96px;
+        letter-spacing: -1px;
+        fill: #f4f1ec;
+      }
+      .dot {
+        font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+        font-style: italic;
+        font-weight: 500;
+        font-size: 154px;
+        fill: #c9a96e;
+      }
+      .tag {
+        font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+        font-style: italic;
+        font-weight: 500;
+        font-size: 32px;
+        fill: rgba(244, 241, 236, 0.75);
+      }
+      .meta {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        fill: #c9a96e;
+      }
+    ]]></style>
+  </defs>
+  <rect width="1584" height="396" fill="#0c0a10"/>
+  <rect width="1584" height="396" fill="url(#wash)"/>
+  <circle cx="1450" cy="320" r="280" fill="url(#orb)"/>
+  <line x1="100" y1="148" x2="148" y2="148" stroke="#c9a96e" stroke-width="2"/>
+  <text class="meta" x="100" y="120">— LEAD THIRTEEN</text>
+  <text class="word" x="100" y="240">cold email,</text>
+  <text class="word" x="100" y="328" fill="#c9a96e">hand-written</text>
+  <text class="dot" x="100" y="332" dx="498">.</text>
+</svg>

@@ -44,7 +44,7 @@ export function ClosingSection() {
             <span className="text-champagne">FROM ADHAM</span>
             <span className="text-ivory/40">LDN · 2026</span>
           </div>
-          <div className="font-display text-[16px] sm:text-[17px] leading-[1.65] text-ivory/85 mb-6 space-y-4">
+          <div className="font-display text-[18px] sm:text-[19px] lg:text-[20px] leading-[1.65] text-ivory/95 mb-6 space-y-4">
             <p>
               Most cold email looks the same. Lead gen agencies chuck a prompt into Claude, take what it spits out, and run with it. They pull from stale databases like Apollo and call it a day.
             </p>
@@ -52,13 +52,13 @@ export function ClosingSection() {
               I operate on a different wavelength. I built a bespoke tool that scrapes fresh leads from Google, Google Maps, and LinkedIn. I hand-write every piece of copy for conversion. I run your campaigns as if they were my own. I take it personally.
             </p>
             <p>
-              You don't have to take my word for it. Look at what my clients have said above.
+              You don't have to take my word for it. Look at what my clients have to say above.
             </p>
             <p>
               Look forward to speaking soon.
             </p>
           </div>
-          <p className="font-display italic text-[15px] sm:text-[16px] text-ivory/75 mb-1">
+          <p className="font-display italic text-[18px] sm:text-[19px] text-ivory/85 mb-1">
             Your biggest supporter,
           </p>
           <div className="font-hand text-[36px] sm:text-[40px] text-ivory leading-none mb-1">
