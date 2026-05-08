@@ -30,8 +30,14 @@ html { scroll-behavior: smooth; }
   }
 
   ::selection {
-    background-color: rgba(157, 106, 221, 0.3);
-    color: rgba(244, 241, 236, 0.95);
+    background-color: rgba(201, 169, 110, 0.22);
+    color: #f4f1ec;
+    text-shadow: 0 0 12px rgba(201, 169, 110, 0.35);
+  }
+  ::-moz-selection {
+    background-color: rgba(201, 169, 110, 0.22);
+    color: #f4f1ec;
+    text-shadow: 0 0 12px rgba(201, 169, 110, 0.35);
   }
 }
 

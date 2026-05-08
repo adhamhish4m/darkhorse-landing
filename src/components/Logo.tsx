@@ -6,7 +6,7 @@ type LogoProps = {
 };
 
 const sizeClasses: Record<NonNullable<LogoProps['size']>, string> = {
-  nav: 'text-[22px] sm:text-[24px]',
+  nav: 'text-[28px] sm:text-[32px]',
   display: 'text-[64px] md:text-[78px]',
   footer: 'text-[18px] sm:text-[20px]',
 };

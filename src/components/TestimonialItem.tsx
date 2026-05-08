@@ -25,24 +25,24 @@ export function TestimonialItem(props: TestimonialItemProps) {
     <div className="border-t border-white/[0.06] py-12 sm:py-14">
       <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center ${props.reverse ? 'lg:[&>*:first-child]:order-2' : ''}`}>
         <div className="space-y-4">
-          <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-champagne">
+          <div className="font-mono text-[12px] tracking-[0.18em] uppercase text-champagne">
             {numberLabel}
           </div>
           <p
-            className="font-display italic text-[22px] sm:text-[26px] lg:text-[28px] leading-[1.35] text-ivory"
+            className="font-display italic text-[26px] sm:text-[30px] lg:text-[34px] leading-[1.32] text-ivory"
             title={props.fullQuote}
           >
             "{props.pullQuote}"
           </p>
           <div className="pt-2">
-            <p className="font-display italic font-medium text-[17px] sm:text-[18px] text-ivory leading-tight">
+            <p className="font-display italic font-medium text-[19px] sm:text-[21px] text-ivory leading-tight">
               {props.name}
             </p>
-            <p className="font-sans text-[11px] tracking-[0.12em] uppercase text-muted-foreground mt-0.5">
+            <p className="font-sans text-[12px] tracking-[0.12em] uppercase text-muted-foreground mt-1">
               {props.role}
             </p>
             {props.attribution && (
-              <p className="font-display italic text-[13px] text-champagne mt-2">
+              <p className="font-display italic text-[16px] sm:text-[17px] text-champagne mt-3 leading-snug">
                 — {props.attribution}
               </p>
             )}
@@ -61,7 +61,7 @@ export function TestimonialItem(props: TestimonialItemProps) {
             </div>
           ) : (
             <div className="aspect-[16/10] flex items-center justify-center p-10 lg:p-14 bg-primary/[0.05]">
-              <p className="font-display italic text-[20px] sm:text-[22px] leading-[1.4] text-ivory/80 text-center">
+              <p className="font-display italic text-[22px] sm:text-[26px] leading-[1.4] text-ivory/85 text-center">
                 "{props.pullQuote}"
               </p>
             </div>

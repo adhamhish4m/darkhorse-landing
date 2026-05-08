@@ -45,10 +45,10 @@ export function TestimonialStack() {
   return (
     <section className="px-6 sm:px-10 lg:px-14 py-20 sm:py-28">
       <div className="mx-auto max-w-[1100px]">
-        <div className="font-sans font-medium text-[11px] tracking-[0.32em] uppercase text-champagne mb-3">
+        <div className="font-sans font-medium text-[13px] tracking-[0.32em] uppercase text-champagne mb-4">
           — THE RECEIPTS
         </div>
-        <h2 className="font-display italic font-normal text-[44px] sm:text-[52px] lg:text-[56px] leading-none tracking-[-0.02em] text-ivory mb-8 sm:mb-10">
+        <h2 className="font-display italic font-normal text-[48px] sm:text-[58px] lg:text-[64px] leading-[1.06] tracking-[-0.02em] text-ivory mb-10 sm:mb-12">
           A few <em className="italic text-champagne">kind words</em>.
         </h2>
         <div>

@@ -15,11 +15,11 @@ export function ClosingSection() {
         <div>
           <div className="flex items-center gap-3 mb-5">
             <div className="hairline w-6" />
-            <span className="font-sans font-medium text-[11px] tracking-[0.32em] uppercase text-champagne">
+            <span className="font-sans font-medium text-[13px] tracking-[0.32em] uppercase text-champagne">
               FIT CHECK
             </span>
           </div>
-          <h2 className="font-display italic font-normal text-[52px] sm:text-[64px] lg:text-[80px] leading-[0.96] tracking-[-0.02em] text-ivory mb-5">
+          <h2 className="font-display italic font-normal text-[52px] sm:text-[64px] lg:text-[80px] leading-[1.06] tracking-[-0.02em] text-ivory mb-5">
             Let's see if
             <br />
             <em className="italic text-champagne">we fit</em>.
@@ -40,17 +40,31 @@ export function ClosingSection() {
 
         {/* RIGHT — letter card */}
         <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8 sm:p-10 lg:p-12">
-          <div className="flex justify-between items-center font-mono text-[10px] tracking-[0.18em] uppercase mb-5">
+          <div className="flex justify-between items-center font-mono text-[12px] tracking-[0.18em] uppercase mb-6">
             <span className="text-champagne">FROM ADHAM</span>
             <span className="text-ivory/40">LDN · 2026</span>
           </div>
-          <p className="font-display text-[16px] sm:text-[17px] leading-[1.65] text-ivory/85 mb-7">
-            Most cold email looks the same because it's all built the same — junior, scaled, templated. I do mine by hand. Lists, copy, sending, replies — all me. If your offer is solid, I'll get it in front of the right people.
+          <div className="font-display text-[16px] sm:text-[17px] leading-[1.65] text-ivory/85 mb-6 space-y-4">
+            <p>
+              Most cold email looks the same. Lead gen agencies chuck a prompt into Claude, take what it spits out, and run with it. They pull from stale databases like Apollo and call it a day.
+            </p>
+            <p>
+              I operate on a different wavelength. I built a bespoke tool that scrapes fresh leads from Google, Google Maps, and LinkedIn. I hand-write every piece of copy for conversion. I run your campaigns as if they were my own. I take it personally.
+            </p>
+            <p>
+              You don't have to take my word for it. Look at what my clients have said above.
+            </p>
+            <p>
+              Look forward to speaking soon.
+            </p>
+          </div>
+          <p className="font-display italic text-[15px] sm:text-[16px] text-ivory/75 mb-1">
+            Your biggest supporter,
           </p>
           <div className="font-hand text-[36px] sm:text-[40px] text-ivory leading-none mb-1">
             Adham
           </div>
-          <div className="font-sans text-[11px] tracking-[0.18em] uppercase text-muted-foreground">
+          <div className="font-sans text-[12px] tracking-[0.18em] uppercase text-muted-foreground">
             FOUNDER · LEAD THIRTEEN
           </div>
         </div>
