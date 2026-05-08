@@ -25,15 +25,19 @@ All assets live at `/public/brand/` and are served by the deploy at:
 - Mono accents: **JetBrains Mono** 400-500
 - Signature: **Caveat**
 
-## Converting SVG → PNG for upload
+## Ready-to-upload PNGs (retina, 2x)
 
-LinkedIn / X / Instagram accept PNG/JPG. To convert:
+These are pre-rendered at 2x scale so they stay crisp at native dimensions:
 
-1. **Mac Preview:** Open the SVG → File → Export → Format: PNG → choose 1024×1024 (or higher).
-2. **Figma / Illustrator:** Drag the SVG in, export as PNG at 2x or 3x.
-3. **Free online:** [cloudconvert.com](https://cloudconvert.com/svg-to-png), upload SVG, set size, download PNG.
-4. **CLI:** If you `brew install librsvg`, then `rsvg-convert -w 1024 -h 1024 profile-square.svg > profile-square.png`.
+- `banner-linkedin.png` — 3168×792 (displays at 1584×396). Use as your LinkedIn banner.
+- `profile-square.png` — 2048×2048 (displays at 1024×1024). Use as your LinkedIn profile photo.
+- `wordmark-dark.png` — 2400×480 (displays at 1200×240). Wordmark on midnight bg for documents/decks.
 
-For LinkedIn:
-- **Profile photo:** use `profile-square.svg` → export as 400×400 or 800×800 PNG.
-- **Banner:** use `banner-linkedin.svg` → export as 1584×396 PNG.
+To regenerate (after editing the layout in `scripts/render-brand-pngs.mjs`):
+
+```bash
+npm install --no-save puppeteer
+node scripts/render-brand-pngs.mjs
+```
+
+Headless Chromium loads the Cormorant Garamond font from Google Fonts and screenshots at the chosen dimensions.
