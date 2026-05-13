@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { SparksCanvas } from './SparksCanvas';
 
-const BOOKING_URL = 'https://cal.com/adham-hamza/fit-assessment';
+const CONTACT_URL = 'mailto:ask@askthirteen.com';
 
 export function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -55,9 +55,9 @@ export function Hero() {
         className="absolute z-10 top-10 right-8 lg:right-14 text-right font-display italic lowercase text-ivory/75 leading-[1.5] tracking-[-0.005em] hidden lg:block"
         aria-hidden
       >
-        <div className="text-[20px] fade-in-up" style={{ animationDelay: '0.05s' }}>pay-per-lead.</div>
+        <div className="text-[20px] fade-in-up" style={{ animationDelay: '0.05s' }}>audit-first.</div>
         <div className="text-[20px] fade-in-up" style={{ animationDelay: '0.15s' }}>founder-led.</div>
-        <div className="text-[20px] fade-in-up text-champagne" style={{ animationDelay: '0.25s' }}>human, not ai.</div>
+        <div className="text-[20px] fade-in-up text-champagne" style={{ animationDelay: '0.25s' }}>engineered, not wrapped.</div>
       </div>
 
       {/* content (bottom-left) */}
@@ -67,24 +67,22 @@ export function Hero() {
           className="font-display font-medium text-[44px] sm:text-[60px] md:text-[72px] lg:text-[80px] leading-[1.06] tracking-[-0.02em] text-ivory mb-4 fade-in-up"
           style={{ animationDelay: '0.15s' }}
         >
-          Cold email,
+          AI,
           <br />
-          <em className="italic font-normal text-champagne">hand-written</em>.
+          <em className="italic font-normal text-champagne">engineered</em>.
         </h1>
         <p
           className="font-display italic text-[19px] sm:text-[21px] lg:text-[24px] leading-[1.45] text-ivory/85 mb-7 max-w-[560px] fade-in-up"
           style={{ animationDelay: '0.25s' }}
         >
-          I reach out to your ideal prospects for you. Lead lists, human-written copy, email verification, warmup, and outreach, all done by yours truly. You only pay when a lead shows interest.
+          I build operating systems for businesses — the daily briefs, intel collectors, agents, and automations that take the manual work off the operator's plate. Audit-first. Founder-led. Boutique.
         </p>
         <a
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={CONTACT_URL}
           className="inline-flex items-center gap-2.5 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-ivory shadow-[0_0_0_1px_rgba(201,169,110,0.3)] hover:opacity-95 transition fade-in-up"
           style={{ animationDelay: '0.35s' }}
         >
-          Book a fit assessment
+          ask thirteen.
           <span aria-hidden>→</span>
         </a>
       </div>

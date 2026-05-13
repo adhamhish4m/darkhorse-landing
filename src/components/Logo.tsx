@@ -20,7 +20,7 @@ export function Logo({ size = 'nav', className }: LogoProps) {
         className,
       )}
     >
-      lead thirteen
+      thirteen
       <span
         className="text-champagne"
         style={{ fontSize: '1.6em', lineHeight: 0, verticalAlign: 0, marginLeft: '-0.04em' }}

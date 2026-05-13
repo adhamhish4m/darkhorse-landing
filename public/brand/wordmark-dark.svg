@@ -19,5 +19,5 @@
   </defs>
   <rect width="1200" height="240" fill="#0c0a10"/>
   <rect width="1200" height="240" fill="url(#wash)"/>
-  <text x="600" y="170" font-size="200" text-anchor="middle">lead thirteen<tspan class="dot" font-size="320" dx="-25">.</tspan></text>
+  <text x="600" y="170" font-size="200" text-anchor="middle">thirteen<tspan class="dot" font-size="320" dx="-25">.</tspan></text>
 </svg>

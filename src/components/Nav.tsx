@@ -1,6 +1,6 @@
 import { Logo } from './Logo';
 
-const BOOKING_URL = 'https://cal.com/adham-hamza/fit-assessment';
+const CONTACT_URL = 'mailto:ask@askthirteen.com';
 
 export function Nav() {
   return (
@@ -9,12 +9,10 @@ export function Nav() {
         <div className="flex h-16 sm:h-20 items-center justify-between">
           <Logo size="nav" />
           <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={CONTACT_URL}
             className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 sm:px-5 sm:py-2.5 text-[13px] sm:text-sm font-semibold text-ivory shadow-[0_0_0_1px_rgba(201,169,110,0.3)] hover:opacity-95 transition min-h-[44px]"
           >
-            Book a fit assessment
+            ask thirteen.
             <span aria-hidden>→</span>
           </a>
         </div>
