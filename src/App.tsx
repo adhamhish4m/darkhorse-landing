@@ -1,7 +1,7 @@
 import { Nav } from './components/Nav';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
-import { TestimonialStack } from './components/TestimonialStack';
+import { CredentialStrip } from './components/CredentialStrip';
 import { ClosingSection } from './components/ClosingSection';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Nav />
       <main className="flex-1">
         <Hero />
-        <TestimonialStack />
+        <CredentialStrip />
         <ClosingSection />
       </main>
       <Footer />

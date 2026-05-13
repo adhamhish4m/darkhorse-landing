@@ -1,4 +1,4 @@
-const BOOKING_URL = 'https://cal.com/adham-hamza/fit-assessment';
+const CONTACT_URL = 'mailto:ask@askthirteen.com';
 
 export function ClosingSection() {
   return (
@@ -25,15 +25,13 @@ export function ClosingSection() {
             <em className="italic text-champagne">we fit</em>.
           </h2>
           <p className="font-display italic text-[19px] sm:text-[22px] leading-[1.4] text-ivory/85 mb-8">
-            A short call. No pitch deck. Either we're a match or we're not.
+            A short conversation. No pitch deck. Either we're a match or we're not.
           </p>
           <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={CONTACT_URL}
             className="inline-flex items-center gap-2.5 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-ivory shadow-[0_0_0_1px_rgba(201,169,110,0.3)] hover:opacity-95 transition"
           >
-            Book a fit assessment
+            ask thirteen.
             <span aria-hidden>→</span>
           </a>
         </div>
@@ -46,16 +44,16 @@ export function ClosingSection() {
           </div>
           <div className="font-display text-[18px] sm:text-[19px] lg:text-[20px] leading-[1.65] text-ivory/95 mb-6 space-y-4">
             <p>
-              Most cold email looks the same. Lead gen agencies chuck a prompt into Claude, take what it spits out, and run with it. They pull from stale databases like Apollo and call it a day.
+              Most "AI consultants" right now are PMs who got laid off six months ago. They take a $99 prompt course, brand themselves as strategists, and pitch decks for systems they couldn't build themselves.
             </p>
             <p>
-              I operate on a different wavelength. I built a bespoke tool that scrapes fresh leads from Google, Google Maps, and LinkedIn. I hand-write every piece of copy for conversion. I run your campaigns as if they were my own. I take it personally.
+              I'm not that. I'm an AI Research Engineer. I build and ship production systems. I run my own agency on the AIOS I'd install for you — daily briefs, intel collection, automated comms, custom agents — all live, all working.
             </p>
             <p>
-              You don't have to take my word for it. Look at what my clients have to say above.
+              The work is audit, architect, install. We start with a conversation about your business. If there's a fit, we go deep.
             </p>
             <p>
-              Look forward to speaking soon.
+              Looking forward to speaking soon.
             </p>
           </div>
           <p className="font-display italic text-[18px] sm:text-[19px] text-ivory/85 mb-1">
@@ -65,7 +63,7 @@ export function ClosingSection() {
             Adham
           </div>
           <div className="font-sans text-[12px] tracking-[0.18em] uppercase text-muted-foreground">
-            FOUNDER · LEAD THIRTEEN
+            FOUNDER · THIRTEEN
           </div>
         </div>
       </div>

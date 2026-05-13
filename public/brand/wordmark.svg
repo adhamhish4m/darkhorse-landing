@@ -13,5 +13,5 @@
       .dot { fill: #c9a96e; }
     ]]></style>
   </defs>
-  <text x="600" y="170" font-size="200" text-anchor="middle">lead thirteen<tspan class="dot" font-size="320" dx="-25">.</tspan></text>
+  <text x="600" y="170" font-size="200" text-anchor="middle">thirteen<tspan class="dot" font-size="320" dx="-25">.</tspan></text>
 </svg>

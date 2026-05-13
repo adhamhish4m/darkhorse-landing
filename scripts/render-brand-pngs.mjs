@@ -66,8 +66,8 @@ const banner = `<!doctype html><html><head>${FONT_LINK}<style>${SHARED_CSS}
   <div class="orb"></div>
   <div class="content">
     <div class="hairline"></div>
-    <div class="wordmark">lead thirteen<span class="dot">.</span></div>
-    <div class="tagline">cold email, <span class="accent">hand-written</span>.</div>
+    <div class="wordmark">thirteen<span class="dot">.</span></div>
+    <div class="tagline">AI, <span class="accent">engineered</span>.</div>
   </div>
 </body></html>`;
 
@@ -101,7 +101,7 @@ const profileSquare = `<!doctype html><html><head>${FONT_LINK}<style>${SHARED_CS
   }
 </style></head><body>
   <div class="hairline"></div>
-  <div class="wordmark">lead thirteen<span class="dot">.</span></div>
+  <div class="wordmark">thirteen<span class="dot">.</span></div>
 </body></html>`;
 
 const wordmarkOnly = `<!doctype html><html><head>${FONT_LINK}<style>${SHARED_CSS}
@@ -126,7 +126,7 @@ const wordmarkOnly = `<!doctype html><html><head>${FONT_LINK}<style>${SHARED_CSS
     vertical-align: 0;
   }
 </style></head><body>
-  <div class="wordmark">lead thirteen<span class="dot">.</span></div>
+  <div class="wordmark">thirteen<span class="dot">.</span></div>
 </body></html>`;
 
 async function render(browser, html, { width, height, scale = 2 }, outName) {

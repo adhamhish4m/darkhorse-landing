@@ -1,11 +1,11 @@
-# Lead Thirteen — Brand Assets
+# thirteen. — Brand Assets
 
 All assets live at `/public/brand/` and are served by the deploy at:
 
 - `/brand/wordmark.svg` — wordmark only, transparent bg (1200×240). Use on any background.
 - `/brand/wordmark-dark.svg` — wordmark on midnight background (1200×240). Use as a banner or letterhead.
 - `/brand/profile-square.svg` — 1024×1024 LinkedIn / social profile photo (square, dark, centered wordmark with hairline + champagne dot).
-- `/brand/banner-linkedin.svg` — 1584×396 LinkedIn banner with "cold email, hand-written." headline + brand purple orb.
+- `/brand/banner-linkedin.svg` — 1584×396 LinkedIn banner with "AI, engineered." headline + brand purple orb.
 - `/brand/mark.svg` — 1024×1024 just the champagne dot mark (no wordmark).
 - `/favicon.svg` — same mark sized for the browser tab.
 
