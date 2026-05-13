@@ -75,7 +75,7 @@ export function Hero() {
           className="font-display italic text-[19px] sm:text-[21px] lg:text-[24px] leading-[1.45] text-ivory/85 mb-7 max-w-[560px] fade-in-up"
           style={{ animationDelay: '0.25s' }}
         >
-          I build operating systems for businesses — the daily briefs, intel collectors, agents, and automations that take the manual work off the operator's plate. Audit-first. Founder-led. Boutique.
+          More soon. The studio is open. Reach me at ask@askthirteen.com.
         </p>
         <a
           href={CONTACT_URL}

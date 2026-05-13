@@ -43,18 +43,12 @@ export function ClosingSection() {
             <span className="text-ivory/40">LDN · 2026</span>
           </div>
           <div className="font-display text-[18px] sm:text-[19px] lg:text-[20px] leading-[1.65] text-ivory/95 mb-6 space-y-4">
+            <p>The site is being written.</p>
             <p>
-              Most "AI consultants" right now are PMs who got laid off six months ago. They take a $99 prompt course, brand themselves as strategists, and pitch decks for systems they couldn't build themselves.
+              The studio is open. <em className="italic text-champagne">Engineered, not wrapped</em>.
             </p>
-            <p>
-              I'm not that. I'm an AI Research Engineer. I build and ship production systems. I run my own agency on the AIOS I'd install for you — daily briefs, intel collection, automated comms, custom agents — all live, all working.
-            </p>
-            <p>
-              The work is audit, architect, install. We start with a conversation about your business. If there's a fit, we go deep.
-            </p>
-            <p>
-              Looking forward to speaking soon.
-            </p>
+            <p>Reach me at ask@askthirteen.com.</p>
+            <p>Looking forward to speaking soon.</p>
           </div>
           <p className="font-display italic text-[18px] sm:text-[19px] text-ivory/85 mb-1">
             Your biggest supporter,

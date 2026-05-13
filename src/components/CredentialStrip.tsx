@@ -6,14 +6,14 @@ type Credential = {
 const CREDENTIALS: Credential[] = [
   {
     label: 'CURRENTLY',
-    body: 'AI Research Engineer',
+    body: 'AI Engineer',
   },
   {
     label: 'EDUCATION',
     body: (
       <>
         Computer Science · AI ·{' '}
-        <em className="italic text-champagne">Top-100 University</em>
+        <em className="italic text-champagne">Top-100 Globally</em>
       </>
     ),
   },
@@ -36,8 +36,11 @@ export function CredentialStrip() {
   return (
     <section className="px-6 sm:px-10 lg:px-14 py-20 sm:py-28">
       <div className="mx-auto max-w-[1100px]">
-        <div className="font-sans font-medium text-[13px] tracking-[0.32em] uppercase text-champagne mb-4">
-          — THE BUILDER
+        <div className="flex items-center gap-3 mb-5">
+          <div className="hairline w-6" />
+          <span className="font-sans font-medium text-[13px] tracking-[0.32em] uppercase text-champagne">
+            THE BUILDER
+          </span>
         </div>
         <h2 className="font-display italic font-normal text-[48px] sm:text-[58px] lg:text-[64px] leading-[1.06] tracking-[-0.02em] text-ivory mb-10 sm:mb-12">
           Built by an <em className="italic text-champagne">engineer</em>.
