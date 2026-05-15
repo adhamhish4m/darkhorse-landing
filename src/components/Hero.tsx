@@ -55,7 +55,7 @@ export function Hero() {
         className="absolute z-10 top-10 right-8 lg:right-14 text-right font-display italic lowercase text-ivory/75 leading-[1.5] tracking-[-0.005em] hidden lg:block"
         aria-hidden
       >
-        <div className="text-[20px] fade-in-up" style={{ animationDelay: '0.05s' }}>the spec.</div>
+        <div className="text-[20px] fade-in-up" style={{ animationDelay: '0.05s' }}>the assessment.</div>
         <div className="text-[20px] fade-in-up" style={{ animationDelay: '0.15s' }}>founder-led.</div>
         <div className="text-[20px] fade-in-up text-champagne" style={{ animationDelay: '0.25s' }}>engineered, not wrapped.</div>
       </div>
