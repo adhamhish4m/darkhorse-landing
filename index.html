@@ -523,7 +523,7 @@
   (function () {
     var cards = Array.prototype.slice.call(document.querySelectorAll('.process .pcard'));
     if (!cards.length) return;
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var reduce = window.matchMedia && (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(max-width: 1000px)').matches);
 
     // reveal on enter
     if ('IntersectionObserver' in window) {
@@ -575,7 +575,7 @@
     var prog = section.querySelector('.wmf-progress-fill');
     var words = Array.prototype.slice.call(section.querySelectorAll('.w'));
     if (!words.length) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia && (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(max-width: 1000px)').matches)) return;
 
     var N = words.length;
     var nx = [], ny = [], dx = [], dy = [], rot = [], sc = [], ph = [];
@@ -654,7 +654,7 @@
     if (!section) return;
     var msgs = Array.prototype.slice.call(section.querySelectorAll('.narr-msg'));
     if (!msgs.length) return;
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var reduce = window.matchMedia && (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(max-width: 1000px)').matches);
     if (reduce) return; /* CSS fallback shows them stacked */
 
     var N = msgs.length;

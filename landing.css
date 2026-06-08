@@ -1609,3 +1609,32 @@ footer.site-footer {
   .assess .stats { grid-template-columns: 1fr 1fr; }
   footer .grid { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   MOBILE / TABLET (<=1000px) — collapse desktop scroll-choreography
+   to clean static stacks. JS for these sections also bails <=1000px,
+   so content renders in natural flow (mirrors the reduced-motion path).
+   ============================================================ */
+@media (max-width: 1000px) {
+  /* NARRATIVE: stack the messages, no sticky pin, natural height */
+  .narrative { height: auto; }
+  .narr-sticky { position: static; height: auto; overflow: visible; padding: 64px 0; }
+  .narr-stack { position: static; display: flex; flex-direction: column; gap: 48px; }
+  .narr-msg {
+    position: static; transform: none !important; opacity: 1 !important;
+    left: auto; top: auto; margin: 0 auto; filter: none !important;
+  }
+
+  /* PROMISE: stack both slides vertically, words pre-composed */
+  .wordmf { height: auto; }
+  .wmf-sticky { position: static; height: auto; overflow: visible; }
+  .wmf-track { width: 100%; flex-direction: column; transform: none !important; }
+  .wmf-slide { width: 100%; flex: 0 0 auto; min-height: auto; padding: 72px 6vw; }
+  .wmf-sentence .w, .wmf-tail .w, .wmf-big .w {
+    transform: none !important; opacity: 1 !important;
+  }
+  .wmf-progress { display: none; }
+
+  /* PROCESS: show line-art fully drawn (scroll-draw is disabled on mobile) */
+  .process [data-draw] { stroke-dashoffset: 0 !important; }
+}
