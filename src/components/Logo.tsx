@@ -15,12 +15,12 @@ export function Logo({ size = 'nav', className }: LogoProps) {
   return (
     <span
       className={cn(
-        'font-display italic font-medium leading-none tracking-[-0.01em] text-ivory lowercase',
+        'font-display font-medium leading-none tracking-[-0.01em] text-ivory lowercase',
         sizeClasses[size],
         className,
       )}
     >
-      vantage
+      <span className="text-champagne">v</span>antage
     </span>
   );
 }

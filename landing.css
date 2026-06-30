@@ -111,7 +111,7 @@ em.acc {
 /* ---------- Wordmark ---------- */
 .wm {
   font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--fg-1);
@@ -1548,7 +1548,7 @@ footer.site-footer {
 }
 .ft-mark {
   font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 500;
+  font-style: normal; font-weight: 500;
   font-size: 26px; line-height: 1; letter-spacing: -0.01em;
   color: var(--fg-1); flex: 0 0 auto;
 }
