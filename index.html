@@ -75,6 +75,15 @@
       "url": "https://www.askvantage.ai/",
       "email": "adham@askvantage.ai",
       "sameAs": [ "https://www.linkedin.com/in/adham-hamza/" ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Leeds"
+      },
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "AI Engineer",
+        "occupationalCategory": "Artificial intelligence engineering"
+      },
       "knowsAbout": [
         "Artificial intelligence",
         "AI engineering",
@@ -130,7 +139,7 @@
       "name": "How qualified are you to help me?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Most AI 'experts' these days are self taught. Our founder, however, has a degree in Computer Science with AI from a top 100 university in the world, and actively works as an AI engineer for one of the biggest luxury vehicle companies in the world. He's also a certified AI consultant. Not just another self-proclaimed 'guru'."
+        "text": "Most AI 'experts' these days are self taught. I'm not. I have a degree in Computer Science with AI from the University of Leeds, studied it for over 6 years, and trained through the AAA Accelerator. And I don't just bolt on tools. I build you an AI foundation that works across your whole business, myself, start to finish. That's how founders get 10+ hours of their week back."
       }
     },
     {
@@ -235,20 +244,10 @@
         <span class="ln" aria-hidden="true"></span>
       </div>
 
-      <!-- copy variant 1 -->
+      <!-- hero copy -->
       <div class="copyset" data-c="1">
-        <h1>We find the problem,<br/><span class="hi">then build the fix.</span></h1>
-        <p class="sub">We assess your business, find where AI pays off most, then build it for you.</p>
-      </div>
-      <!-- copy variant 2 -->
-      <div class="copyset" data-c="2">
-        <h1>The last AI assessment<br/>you'll <span class="hi">ever need.</span></h1>
-        <p class="sub">Four weeks inside your business, one plain-english roadmap. The clarity most founders reach for far too late.</p>
-      </div>
-      <!-- copy variant 3 -->
-      <div class="copyset" data-c="3">
-        <h1>The system.<br/><span class="hi">Not the slide deck.</span></h1>
-        <p class="sub">Working software for busy founders &mdash; built by the one engineer who wrote the plan, never handed to an agency.</p>
+        <h1>Get your life back<br/><span class="hi">without having to hire.</span></h1>
+        <p class="sub">We find what's slowing your business down, and build the AI to fix it.</p>
       </div>
 
       <div class="cta-row">
@@ -442,6 +441,51 @@
     </div>
   </section>
 
+  <!-- ============================ FOUNDER / ABOUT ============================ -->
+  <style>
+    .founder { background: var(--bg-1); padding: 116px var(--gutter) 120px; }
+    .founder .wrap { max-width: 980px; }
+    .founder-head { text-align: center; margin: 0 0 62px; }
+    .founder-eyebrow { font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--fg-3); }
+    .founder-title { margin:14px 0 0; font-family:'Inter',system-ui,sans-serif; font-weight:800; font-size:clamp(28px,3.6vw,50px); letter-spacing:-.035em; line-height:1.05; color:var(--fg-1); }
+    .founder-title .champ { color:var(--champagne); }
+    .founder .letter-wrap { max-width:920px; margin:0 auto; align-items:start; }
+    .founder .photo { aspect-ratio:4/5; border-radius:16px; border:1.5px solid var(--champagne); box-shadow:0 0 0 5px rgba(195,163,104,.10), 0 26px 60px -30px rgba(23,19,28,.42), 0 2px 8px -3px rgba(23,19,28,.2); }
+    .founder .photo .meta { letter-spacing:.15em; }
+    .founder .letter a { color:var(--champagne); text-decoration:none; border-bottom:1px solid rgba(195,163,104,.4); transition:border-color .2s var(--ease); }
+    .founder .letter a:hover { border-bottom-color:var(--champagne); }
+    @media (max-width:760px){
+      .founder { padding:78px var(--gutter) 84px; }
+      .founder .letter-wrap { grid-template-columns:1fr; gap:34px; }
+      .founder .photo { max-width:256px; }
+      .founder-head { margin-bottom:44px; }
+    }
+  </style>
+  <section class="founder" id="about" data-screen-label="06b About">
+    <div class="wrap">
+      <div class="founder-head">
+        <div class="founder-eyebrow">the person, not a pitch</div>
+        <h2 class="founder-title">Who you're actually working with<span class="champ">.</span></h2>
+      </div>
+      <div class="letter-wrap">
+        <div class="photo">
+          <div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+          <div class="meta"><span>Adham Hamza</span><span class="champ">London</span></div>
+        </div>
+        <div class="letter">
+          <p>I'm an AI engineer at one of the biggest luxury car companies in the world, certified AI consultant, and have a degree in Computer Science with AI from a top 100 university in the world.</p>
+          <p>But that's not what you're here for; you've probably been seeing posts about AI all over your feed, and are slightly overwhelmed. You want to use it in your business, but don't even know where to start.</p>
+          <p>That's where I come in.</p>
+          <p>I do one thing: run a full assessment of your business; processes, bottlenecks, what's holding you back, what you'd rather not do, what would give you your time back.</p>
+          <p>I show you exactly where implementing AI would make the biggest difference to you personally.</p>
+          <p>But I don't just talk AI, I build it too.</p>
+          <p>You didn't start a business to be run by it. That's where I can help.</p>
+          <p class="sig">Adham<span class="dot">.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================ FAQ ============================ -->
   <section class="faq" id="faq" data-screen-label="06 FAQ">
     <div class="wrap">
@@ -455,7 +499,7 @@
             <span>How qualified are you to help me?</span>
             <svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </button>
-          <div class="faq-a"><div class="faq-a-inner"><p>Most AI ‘experts’ these days are self taught. Our founder, however, has a degree in Computer Science with AI from a top 100 university in the world, and actively works as an AI engineer for one of the biggest luxury vehicle companies in the world. He's also a certified AI consultant. Not just another self-proclaimed ‘guru’.</p></div></div>
+          <div class="faq-a"><div class="faq-a-inner"><p>Most AI ‘experts’ these days are self taught. I'm not. I have a degree in Computer Science with AI from the University of Leeds, studied it for over 6 years, and trained through the AAA Accelerator. And I don't just bolt on tools. I build you an AI foundation that works across your whole business, myself, start to finish. That's how founders get 10+ hours of their week back.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">

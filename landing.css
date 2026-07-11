@@ -480,10 +480,11 @@ nav.top .right { justify-self: end; display: flex; align-items: center; gap: 16p
 
 .hero .sub {
   margin: 34px auto 0;
-  max-width: 50ch;
+  max-width: 46ch;
   font-size: 18px;
   line-height: 1.55;
   color: var(--fg-2);
+  text-wrap: balance;
 }
 .hero .sub em.acc { font-size: 20px; }
 .hero .sub .hl-days {
