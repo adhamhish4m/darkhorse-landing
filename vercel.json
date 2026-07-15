@@ -8,13 +8,25 @@
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "askthirteen.com" }],
-      "destination": "https://www.askvantage.ai/:path*",
+      "destination": "https://www.thedarkhorseai.com/:path*",
       "permanent": true
     },
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.askthirteen.com" }],
-      "destination": "https://www.askvantage.ai/:path*",
+      "destination": "https://www.thedarkhorseai.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "askvantage.ai" }],
+      "destination": "https://www.thedarkhorseai.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.askvantage.ai" }],
+      "destination": "https://www.thedarkhorseai.com/:path*",
       "permanent": true
     }
   ],

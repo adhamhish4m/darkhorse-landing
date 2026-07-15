@@ -1,11 +1,11 @@
-# vantage (askvantage.ai)
+# Dark Horse AI (thedarkhorseai.com)
 
-> vantage helps busy small-business owners get their life back using AI, without
+> Dark Horse AI helps busy small-business owners get their life back using AI, without
 > hiring. Founded by Adham Hamza, an AI engineer who installs working systems
 > rather than delivering slide decks. One paid AI assessment maps the highest-value
 > automations; implementation builds follow. Based in London, serving UK and US clients.
 
-## What vantage does
+## What Dark Horse AI does
 - AI readiness assessment for small businesses (the paid diagnostic; a clear roadmap of where AI removes manual work)
 - AI Operating System implementation: an intelligence layer wrapped around a business (context, live data, daily intelligence, task automation)
 - Vertical builds, e.g. after-hours call screening and missed-call recovery for commercial cleaning companies (Go Janitorial case study)
@@ -23,5 +23,5 @@ seeing the numbers in real time, synthesising signals into a daily brief, and
 automating recurring tasks one by one, so the business runs with less manual work.
 
 ## Links
-- Home: https://www.askvantage.ai/
+- Home: https://www.thedarkhorseai.com/
 - Book an assessment: https://cal.com/adham-hamza/the-assessment

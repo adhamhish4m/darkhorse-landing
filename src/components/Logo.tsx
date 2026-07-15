@@ -3,24 +3,26 @@ import { cn } from '../lib/utils';
 type LogoProps = {
   size?: 'nav' | 'display' | 'footer';
   className?: string;
+  /** 'dark' = bone logotype for dark grounds, 'light' = ink logotype for light grounds */
+  ground?: 'dark' | 'light';
 };
 
 const sizeClasses: Record<NonNullable<LogoProps['size']>, string> = {
-  nav: 'text-[28px] sm:text-[32px]',
-  display: 'text-[64px] md:text-[78px]',
-  footer: 'text-[18px] sm:text-[20px]',
+  nav: 'h-[22px] sm:h-[26px]',
+  display: 'h-[52px] md:h-[64px]',
+  footer: 'h-[16px] sm:h-[18px]',
 };
 
-export function Logo({ size = 'nav', className }: LogoProps) {
+/**
+ * The drawn `dark horse ai` logotype. It is never re-typed — always the SVG.
+ * Source: public/brand/wordmark-{dark,light}.svg (canonical: aios/outputs/darkhorse-brand/logo/).
+ */
+export function Logo({ size = 'nav', className, ground = 'light' }: LogoProps) {
   return (
-    <span
-      className={cn(
-        'font-display font-medium leading-none tracking-[-0.01em] text-ivory lowercase',
-        sizeClasses[size],
-        className,
-      )}
-    >
-      <span className="text-champagne">v</span>antage
-    </span>
+    <img
+      src={`/brand/wordmark-${ground}.svg`}
+      alt="dark horse ai"
+      className={cn('block w-auto', sizeClasses[size], className)}
+    />
   );
 }

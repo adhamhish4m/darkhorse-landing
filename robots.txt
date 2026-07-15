@@ -1,4 +1,4 @@
-# robots.txt — askvantage.ai
+# robots.txt — thedarkhorseai.com
 # Search + AI crawlers are welcome. Being cited by AI assistants is on-brand.
 
 User-agent: *
@@ -26,4 +26,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://www.askvantage.ai/sitemap.xml
+Sitemap: https://www.thedarkhorseai.com/sitemap.xml
