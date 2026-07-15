@@ -18,23 +18,23 @@
 
 /* ---------- DARK surface (default) ---------- */
 html[data-surface="dark"], html:not([data-surface]) {
-  --bg-0: #0c0a10;
-  --bg-1: #14111b;
-  --bg-2: #1b1724;
-  --fg-1: #f4f1ec;
-  --fg-2: rgba(244, 241, 236, 0.74);
-  --fg-3: rgba(244, 241, 236, 0.52);
-  --fg-4: rgba(244, 241, 236, 0.34);
-  --rule: rgba(244, 241, 236, 0.11);
-  --rule-2: rgba(244, 241, 236, 0.18);
-  --card: #14111b;
-  --card-hover: #1b1724;
-  --badge-bg: rgba(244, 241, 236, 0.035);
-  --badge-border: rgba(244, 241, 236, 0.12);
-  --cta-fg: #0c0a10;
+  --bg-0: #0F0D0A;
+  --bg-1: #1B1814;
+  --bg-2: #23201A;
+  --fg-1: #ECE7DD;
+  --fg-2: rgba(236, 231, 221, 0.74);
+  --fg-3: rgba(236, 231, 221, 0.52);
+  --fg-4: rgba(236, 231, 221, 0.34);
+  --rule: rgba(236, 231, 221, 0.11);
+  --rule-2: rgba(236, 231, 221, 0.18);
+  --card: #1B1814;
+  --card-hover: #23201A;
+  --badge-bg: rgba(236, 231, 221, 0.035);
+  --badge-border: rgba(236, 231, 221, 0.12);
+  --cta-fg: #0F0D0A;
   --logo-filter: brightness(0) invert(1); /* @kind other */
-  --wash-1: radial-gradient(58% 50% at 50% 8%, rgba(157,106,221,0.20), transparent 62%); /* @kind color */
-  --wash-2: radial-gradient(40% 40% at 82% 78%, rgba(201,169,110,0.07), transparent 70%); /* @kind color */
+  --wash-1: radial-gradient(58% 50% at 50% 8%, rgba(198,161,91,0.13), transparent 62%); /* @kind color */
+  --wash-2: radial-gradient(40% 40% at 82% 78%, rgba(198,161,91,0.07), transparent 70%); /* @kind color */
   --grain-op: 0.04; /* @kind other */
 }
 
