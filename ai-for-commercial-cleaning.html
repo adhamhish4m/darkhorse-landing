@@ -29,9 +29,9 @@
   gtag('config', 'G-TFGZXWYK4C');
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<!-- self-hosted fonts (see @font-face in landing.css); preload the two used in the hero H1 -->
+<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-var-latin.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="/fonts/fraunces-ital-var-latin.woff2" crossorigin />
 <link rel="stylesheet" href="landing.css" />
 
 <style>
@@ -54,14 +54,15 @@
   .vsec-head .lead b { color: var(--fg-1); font-weight: 600; }
 
   .vgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
-  .vcard { background: #fdfbf7; border: 1px solid var(--rule); border-radius: 18px; padding: 32px 30px;
-    box-shadow: 0 1px 2px rgba(23,19,28,0.04), 0 10px 30px rgba(23,19,28,0.05);
-    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
-    /* light island on the dark page: force ink text tones regardless of page surface */
-    --fg-1: #17131c; --fg-2: rgba(23,19,28,0.62); --fg-3: rgba(23,19,28,0.45);
+  .vcard { background: var(--card); border: 1px solid var(--rule); border-radius: 18px; padding: 32px 30px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.20), 0 12px 34px rgba(0,0,0,0.28);
+    transition: transform 0.3s var(--ease), background 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+    /* dark card on the ink page: inherit the page's bone/brass palette */ }
+  .vcard:hover { transform: translateY(-3px); background: var(--card-hover); border-color: var(--champagne);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.25), 0 18px 44px rgba(0,0,0,0.36); }
+  /* the preview panel stays a light "screenshot" framed in the dark card: force ink text tones inside it only */
+  .vcard .vpreview { --fg-1: #17131c; --fg-2: rgba(23,19,28,0.62); --fg-3: rgba(23,19,28,0.45);
     --rule: rgba(23,19,28,0.12); --champagne: #96763A; }
-  .vcard:hover { transform: translateY(-3px); border-color: var(--champagne);
-    box-shadow: 0 2px 4px rgba(23,19,28,0.05), 0 16px 40px rgba(23,19,28,0.09); }
   .vcard .vicon { color: var(--champagne); margin-bottom: 18px; }
   .vcard .vicon svg { width: 30px; height: 30px; display: block; }
   .vcard h3 { font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: -0.01em;
@@ -327,7 +328,7 @@
     <div class="wrap">
       <div class="eyebrow" style="justify-content:center;"><span class="txt">where to start</span></div>
       <h2 style="font-family:'Inter',sans-serif;font-weight:700;letter-spacing:-0.015em;font-size:clamp(26px,4vw,42px);line-height:1.1;color:var(--fg-1);">These are real, working systems.<br/>Yours is next.</h2>
-      <p>Everything here is built and running. <b>The assessment</b> figures out which one actually pays off for your operation. Then we build it. Around how you already run.</p>
+      <p>Everything here is built and running. <b>The assessment</b> figures out which one actually pays off for your operation. Then we build it. Around how you already run. New to AI and not sure where to begin? <a class="pl-link" href="/ai-for-small-business">start here</a>.</p>
       <div class="cta-row" style="display:flex;justify-content:center;">
         <a class="btn primary magnetic" href="https://cal.com/adham-hamza/the-assessment" target="_blank" rel="noopener">
           <span class="lbl">start with the assessment
