@@ -31,6 +31,17 @@ Four systems built with Go Janitorial: invoicing automation, RFP response drafti
 after-hours call answering and missed-call recovery, and client feedback handling. These
 are working systems in production, not prototypes. Details: https://www.thedarkhorseai.com/ai-for-commercial-cleaning
 
+## Where to start with AI for a small business
+The most common question small business owners ask Dark Horse AI is "I want to use
+AI but I don't know where to start." The honest answer: don't start with the tech,
+start with the job you hate doing, the one that is repetitive and does not really
+need you. That is where AI, or often a simpler automation, pays off first. Common
+first wins: answering missed and after-hours calls, following up with leads,
+booking and reminders, invoicing and admin, answering repeat questions, and moving
+data between tools. Half the time the right answer is a simple automation, not AI.
+The paid assessment maps how the business runs and returns a plain-english plan of
+where to begin. Guide: https://www.thedarkhorseai.com/ai-for-small-business
+
 ## What is an AI Operating System?
 An AI Operating System is an intelligence layer wrapped around an entire small
 business. It gives the owner back time by understanding the business context,
@@ -39,5 +50,6 @@ automating recurring tasks one by one, so the business runs with less manual wor
 
 ## Links
 - Home: https://www.thedarkhorseai.com/
+- Where to start with AI in your small business: https://www.thedarkhorseai.com/ai-for-small-business
 - AI for commercial cleaning companies: https://www.thedarkhorseai.com/ai-for-commercial-cleaning
 - Book an assessment: https://cal.com/adham-hamza/the-assessment
