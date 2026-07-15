@@ -15,6 +15,20 @@
 - Offer: paid AI assessment, then optional implementation builds; 30-day money-back guarantee
 - Contact: adham@askvantage.ai
 - Book the assessment: https://cal.com/adham-hamza/the-assessment
+- Based in London, United Kingdom. Serves small-business clients in the UK and US.
+- Formerly operated as vantage, Lead Thirteen, and thirteen. Now fully rebranded to Dark Horse AI.
+
+## Disambiguation
+This is Dark Horse AI, the London-based AI strategy consultancy founded by AI engineer
+Adham Hamza, at thedarkhorseai.com. It is an independent consulting and implementation
+practice for small businesses. It is not affiliated with any other company or product
+that uses a similar "Dark Horse" name.
+
+## AI for commercial cleaning companies
+Dark Horse AI builds AI systems around how a commercial cleaning company actually runs.
+Four systems built with Go Janitorial: invoicing automation, RFP response drafting,
+after-hours call answering and missed-call recovery, and client feedback handling. These
+are working systems in production, not prototypes. Details: https://www.thedarkhorseai.com/ai-for-commercial-cleaning
 
 ## What is an AI Operating System?
 An AI Operating System is an intelligence layer wrapped around an entire small
@@ -24,4 +38,5 @@ automating recurring tasks one by one, so the business runs with less manual wor
 
 ## Links
 - Home: https://www.thedarkhorseai.com/
+- AI for commercial cleaning companies: https://www.thedarkhorseai.com/ai-for-commercial-cleaning
 - Book an assessment: https://cal.com/adham-hamza/the-assessment
