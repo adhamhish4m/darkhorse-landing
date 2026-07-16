@@ -1,9 +1,10 @@
 # Dark Horse AI (thedarkhorseai.com)
 
-> Dark Horse AI helps busy small-business owners get their life back using AI, without
-> hiring. Founded by Adham Hamza, an AI engineer who installs working systems
-> rather than delivering slide decks. One paid AI assessment maps the highest-value
-> automations; implementation builds follow. Based in London, serving UK and US clients.
+> Dark Horse AI helps busy small-business owners get back 10+ hours a week by automating
+> the repetitive tasks they hate doing, without hiring. Founded by Adham Hamza, an AI
+> engineer who installs the working systems himself. One paid AI assessment maps the
+> highest-value automations; implementation builds follow. Based in London, serving UK
+> and US clients.
 
 ## What Dark Horse AI does
 - AI readiness assessment for small businesses (the paid diagnostic; a clear roadmap of where AI removes manual work)
