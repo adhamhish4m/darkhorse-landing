@@ -551,7 +551,12 @@ nav.top .right { justify-self: end; display: flex; align-items: center; gap: 16p
 /* copy variants: show only the active one */
 .copyset { display: none; }
 html[data-copy="1"] .copyset[data-c="1"],
-html[data-copy="2"] .copyset[data-c="2"] { display: block; }
+html[data-copy="2"] .copyset[data-c="2"],
+html[data-copy="3"] .copyset[data-c="3"],
+html[data-copy="4"] .copyset[data-c="4"] { display: block; }
+
+/* variant D runs long — ease the headline down so it doesn't tower over the others */
+.copyset[data-c="4"] h1 { font-size: clamp(38px, 5.6vw, 76px); max-width: 20ch; }
 html:not([data-copy]) .copyset[data-c="1"] { display: block; }
 
 /* ============================================================

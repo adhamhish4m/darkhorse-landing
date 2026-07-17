@@ -26,14 +26,14 @@
      Bucket is sticky per browser; ?hero_copy=1|2 forces one for QA without persisting. -->
 <script>
   (function () {
-    var KEY = 'dh_hero_copy', v = null;
+    var KEY = 'dh_hero_copy', VARIANTS = ['1', '2', '3', '4'], v = null;
     try { v = localStorage.getItem(KEY); } catch (e) {}
-    if (v !== '1' && v !== '2') {
-      v = Math.random() < 0.5 ? '1' : '2';
+    if (VARIANTS.indexOf(v) === -1) {
+      v = VARIANTS[Math.floor(Math.random() * VARIANTS.length)];
       try { localStorage.setItem(KEY, v); } catch (e) {}
     }
-    var forced = /[?&]hero_copy=([12])\b/.exec(location.search);
-    if (forced) v = forced[1];
+    var forced = /[?&]hero_copy=([^&]+)/.exec(location.search);
+    if (forced && VARIANTS.indexOf(forced[1]) !== -1) v = forced[1];
     document.documentElement.setAttribute('data-copy', v);
     window.__heroCopy = v;
   })();
@@ -289,6 +289,16 @@
         <h1>Get back 10+ hours/week<sup class="ast"><abbr title="on average">*</abbr></sup><br/><span class="hi">without having to hire.</span></h1>
         <p class="sub">We find what's slowing your business down, and build the AI to fix it.</p>
         <p class="fine"><span class="champ">*</span> on average</p>
+      </div>
+
+      <div class="copyset" data-c="3">
+        <h1>Stop hiring people<br/><span class="hi">to free up your time.</span></h1>
+        <p class="sub">We find what's slowing your business down, and build the AI to fix it.</p>
+      </div>
+
+      <div class="copyset" data-c="4">
+        <h1>Stop paying full&#8209;time salaries<br/><span class="hi">for automatable tasks.</span></h1>
+        <p class="sub">We find what's slowing your business down, and build the AI to fix it.</p>
       </div>
 
       <div class="cta-row">
