@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- @dsCard group="Brand" name="Landing Page" subtitle="Centered hero, trust badge, floating proof" -->
-<html lang="en" data-surface="dark" data-hero="a" data-badges="on" data-copy="1">
+<html lang="en" data-surface="dark" data-copy="1">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,12 +22,31 @@
 <meta name="twitter:image" content="https://www.thedarkhorseai.com/og-image.png" />
 <link rel="canonical" href="https://www.thedarkhorseai.com/" />
 
+<!-- Hero copy A/B. Runs before paint so the losing variant never flashes.
+     Bucket is sticky per browser; ?hero_copy=1|2 forces one for QA without persisting. -->
+<script>
+  (function () {
+    var KEY = 'dh_hero_copy', v = null;
+    try { v = localStorage.getItem(KEY); } catch (e) {}
+    if (v !== '1' && v !== '2') {
+      v = Math.random() < 0.5 ? '1' : '2';
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+    }
+    var forced = /[?&]hero_copy=([12])\b/.exec(location.search);
+    if (forced) v = forced[1];
+    document.documentElement.setAttribute('data-copy', v);
+    window.__heroCopy = v;
+  })();
+</script>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TFGZXWYK4C"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+  // set() before config() so page_view and every later event carry the variant
+  gtag('set', { hero_copy: window.__heroCopy });
   gtag('config', 'G-TFGZXWYK4C');
 </script>
 
@@ -260,10 +279,16 @@
         <span class="ln" aria-hidden="true"></span>
       </div>
 
-      <!-- hero copy -->
+      <!-- hero copy — variants are A/B tested, see the hero_copy script in <head> -->
       <div class="copyset" data-c="1">
         <h1>Get your life back<br/><span class="hi">without having to hire.</span></h1>
         <p class="sub">We find what's slowing your business down, and build the AI to fix it.</p>
+      </div>
+
+      <div class="copyset" data-c="2">
+        <h1>Get back 10+ hours/week<sup class="ast"><abbr title="on average">*</abbr></sup><br/><span class="hi">without having to hire.</span></h1>
+        <p class="sub">We find what's slowing your business down, and build the AI to fix it.</p>
+        <p class="fine"><span class="champ">*</span> on average</p>
       </div>
 
       <div class="cta-row">
@@ -273,15 +298,7 @@
         </a>
       </div>
 
-      <!-- variant B: inline stat row -->
-      <div class="statrow" aria-hidden="false">
-        <div class="cell"><div class="v">04<span class="u">wks</span></div><div class="k">kickoff → roadmap</div></div>
-        <div class="cell"><div class="v">13<span class="u">yrs</span></div><div class="k">building systems</div></div>
-        <div class="cell"><div class="v">01</div><div class="k">engineer on the work</div></div>
-      </div>
     </div>
-
-    <!-- variant A: floating stat badges (Monk-style) -->
   </section>
 
   <!-- ============================ CLIENTS (marquee) ============================ -->
@@ -971,6 +988,23 @@
         if (!reduce && !raf) raf = requestAnimationFrame(tick);
       });
     });
+  })();
+</script>
+
+<!-- ============================ CTA TRACKING (A/B conversion) ============================ -->
+<script>
+  // Every booking link is a conversion. hero_copy rides along via gtag('set'), but we
+  // pass it explicitly too so the event is self-contained if that ever changes.
+  (function () {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="cal.com"]');
+      if (!a || typeof gtag !== 'function') return;
+      var sec = a.closest('[data-screen-label]');
+      gtag('event', 'cta_click', {
+        hero_copy: window.__heroCopy,
+        location: sec ? sec.getAttribute('data-screen-label') : 'nav'
+      });
+    }, true);
   })();
 </script>
 

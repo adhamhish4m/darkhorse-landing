@@ -292,7 +292,7 @@ nav.top .right { justify-self: end; display: flex; align-items: center; gap: 16p
    ============================================================ */
 .hero {
   position: relative;
-  padding: 96px 40px 88px;
+  padding: 110px 40px 120px;
   overflow: hidden;
 }
 .hero .wash {
@@ -522,98 +522,37 @@ nav.top .right { justify-self: end; display: flex; align-items: center; gap: 16p
 }
 .hero .reassure .champ { color: var(--champagne); }
 
+/* qualifier asterisk — rides above the headline without joining its rhythm */
+.hero h1 .ast {
+  font-family: ui-monospace, monospace;
+  font-size: 0.26em;
+  font-weight: 500;
+  color: var(--champagne);
+  letter-spacing: 0;
+  top: -0.9em;
+  margin-left: 0.06em;
+}
+.hero h1 .ast abbr {
+  text-decoration: none;
+  border: 0;
+  cursor: help;
+}
+
+/* the qualifier itself — deliberately quiet, off the main line */
+.hero .fine {
+  margin: 14px 0 0;
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--fg-3);
+}
+.hero .fine .champ { color: var(--champagne); }
+
 /* copy variants: show only the active one */
 .copyset { display: none; }
 html[data-copy="1"] .copyset[data-c="1"],
-html[data-copy="2"] .copyset[data-c="2"],
-html[data-copy="3"] .copyset[data-c="3"] { display: block; }
+html[data-copy="2"] .copyset[data-c="2"] { display: block; }
 html:not([data-copy]) .copyset[data-c="1"] { display: block; }
-
-/* ---------- Floating stat badges (variant A, Monk style) ---------- */
-.hero .floats { display: none; }
-.float-badge {
-  position: absolute;
-  z-index: 3;
-  display: flex; flex-direction: column; gap: 2px;
-  padding: 12px 16px;
-  background: var(--card);
-  border: 1px solid var(--badge-border);
-  border-radius: 12px;
-  max-width: 172px;
-  box-shadow: 0 18px 44px -22px rgba(0,0,0,0.6);
-  text-align: left;
-  animation: floaty 7s var(--ease) infinite;
-}
-html[data-surface="light"] .float-badge { box-shadow: 0 16px 40px -24px rgba(23,19,28,0.35); }
-.float-badge .v {
-  font-family: 'Fraunces', serif;
-  font-style: italic; font-weight: 500;
-  font-size: 25px; line-height: 1; color: var(--fg-1);
-  letter-spacing: -0.01em;
-}
-.float-badge .v .u { font-size: 14px; color: var(--fg-3); font-style: italic; margin-left: 3px; }
-.float-badge .k {
-  font-family: ui-monospace, monospace;
-  font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--fg-3);
-}
-.float-badge .ic {
-  position: absolute; top: 11px; right: 12px;
-  width: 13px; height: 13px; color: var(--champagne); opacity: 0.85;
-}
-.float-badge.f1 { top: 17%; left: 12px; }
-.float-badge.f2 { top: 51%; left: 26px; animation-delay: -2.3s; }
-.float-badge.f3 { top: 21%; right: 12px; animation-delay: -1.1s; }
-.float-badge.f4 { top: 55%; right: 26px; animation-delay: -3.6s; }
-@keyframes floaty {
-  0%, 100% { transform: translateY(0) rotate(-0.6deg); }
-  50% { transform: translateY(-9px) rotate(0.4deg); }
-}
-@media (prefers-reduced-motion: reduce) { .float-badge { animation: none; } }
-
-/* ---------- Inline stat row (variant B) ---------- */
-.hero .statrow { display: none; }
-.statrow {
-  margin-top: 52px;
-  width: 100%;
-  max-width: 760px;
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  border: 1px solid var(--rule);
-  border-radius: 14px;
-  overflow: hidden;
-  background: var(--card);
-}
-.statrow .cell {
-  padding: 22px 18px;
-  border-right: 1px solid var(--rule);
-  text-align: center;
-}
-.statrow .cell:last-child { border-right: none; }
-.statrow .cell .v {
-  font-family: 'Fraunces', serif;
-  font-style: italic; font-weight: 500;
-  font-size: 38px; line-height: 1; color: var(--fg-1); letter-spacing: -0.02em;
-}
-.statrow .cell .v .u { font-size: 16px; color: var(--champagne); }
-.statrow .cell .k {
-  margin-top: 9px;
-  font-family: ui-monospace, monospace;
-  font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--fg-3); line-height: 1.5;
-}
-
-/* variant switching */
-html[data-hero="a"][data-badges="on"] .hero .floats,
-html:not([data-hero])[data-badges="on"] .hero .floats,
-html[data-hero="a"]:not([data-badges]) .hero .floats,
-html:not([data-hero]):not([data-badges]) .hero .floats { display: block; }
-html[data-hero="b"] .hero .statrow { display: grid; }
-/* variant c shows neither — quietest */
-
-/* hero vertical sizing tweaks per variant */
-html[data-hero="a"] .hero, html:not([data-hero]) .hero { padding-top: 110px; padding-bottom: 120px; }
-html[data-hero="c"] .hero { padding-top: 120px; padding-bottom: 130px; }
-html[data-hero="c"] .hero h1 { font-size: clamp(58px, 9vw, 132px); }
 
 /* ============================================================
    CLIENT LOGO MARQUEE — real logos, re-backgrounded to ivory,
@@ -1577,19 +1516,11 @@ footer.site-footer {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-/* floats need wide gutters — only show on large desktops */
-@media (max-width: 1300px) {
-  .float-badge { display: none !important; }
-}
 @media (max-width: 1000px) {
   .nav-inner { padding: 14px 22px; }
   nav.top .center { display: none; }
   nav.top .right .pill { display: none; }
   .hero { padding: 84px 22px 70px !important; }
-  .float-badge { display: none !important; }
-  .statrow { grid-template-columns: 1fr 1fr; }
-  .statrow .cell:nth-child(2) { border-right: none; }
-  .statrow .cell:nth-child(1), .statrow .cell:nth-child(2) { border-bottom: 1px solid var(--rule); }
   section.band { padding: 72px 22px; }
   .services-head { grid-template-columns: 1fr; gap: 16px; }
   .book-grid { grid-template-columns: 1fr; gap: 38px; }
@@ -1608,7 +1539,6 @@ footer.site-footer {
   .svc-grid { grid-template-columns: 1fr; margin: 0 18px; }
   .svc-frame { background-size: 18px 100%, 100% 100%; }
   .svc-foot { margin: 16px 18px 0; }
-  .statrow { grid-template-columns: 1fr 1fr; }
   .assess .stats { grid-template-columns: 1fr 1fr; }
   footer .grid { grid-template-columns: 1fr; }
 }
