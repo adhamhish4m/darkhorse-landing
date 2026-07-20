@@ -45,9 +45,11 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  // set() before config() so page_view and every later event carry the variant
-  gtag('set', { hero_copy: window.__heroCopy });
-  gtag('config', 'G-B7WE9FN1WG');
+  // The variant MUST ride on config(), not set(). A bare gtag('set', {hero_copy: ...})
+  // does not attach a custom param to the page_view that config() fires — verified
+  // against /g/collect: page_view went out with no hero_copy at all, so every session
+  // logged as "(not set)" and the A/B test had conversions but no denominator.
+  gtag('config', 'G-B7WE9FN1WG', { hero_copy: window.__heroCopy });
 </script>
 
 <!-- self-hosted fonts (see @font-face in landing.css); preload the two used in the hero H1 -->
@@ -993,8 +995,8 @@
 
 <!-- ============================ CTA TRACKING (A/B conversion) ============================ -->
 <script>
-  // Every booking link is a conversion. hero_copy rides along via gtag('set'), but we
-  // pass it explicitly too so the event is self-contained if that ever changes.
+  // Every booking link is a conversion. Passing hero_copy explicitly here is what kept
+  // the variant attached to cta_click while the page_view path was broken — keep it.
   (function () {
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[href*="cal.com"]');
