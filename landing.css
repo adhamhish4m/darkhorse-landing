@@ -903,8 +903,8 @@ html:not([data-copy]) .copyset[data-c="1"] { display: block; }
 .reveal-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .reveal-up.in { opacity: 1; transform: none; }
 @media (max-width: 760px) {
-  .testify { padding: 84px var(--gutter) 90px; }
-  .testify-grid { grid-template-columns: 1fr; gap: 56px; max-width: 520px; }
+  .testify { padding: 60px var(--gutter) 64px; }
+  .testify-grid { grid-template-columns: 1fr; gap: 40px; max-width: 520px; }
   .testify-grid::before { display: none; }
   .testify-title { margin-bottom: 54px; }
 }
@@ -981,7 +981,7 @@ html:not([data-copy]) .copyset[data-c="1"] { display: block; }
   color: var(--fg-1);
 }
 @media (max-width: 760px) {
-  .faq { padding: 84px var(--gutter) 96px; }
+  .faq { padding: 60px var(--gutter) 72px; }
   .faq-q { padding: 22px 20px; gap: 18px; }
   .faq-a-inner { padding: 0 20px 22px; }
 }
@@ -1082,7 +1082,7 @@ html:not([data-copy]) .copyset[data-c="1"] { display: block; }
 .pcard.reveal.in { opacity: 1; transform: none; }
 
 @media (max-width: 760px) {
-  .process { padding: 80px var(--gutter) 90px; }
+  .process { padding: 60px var(--gutter) 64px; }
   .pcard { grid-template-columns: 1fr; gap: 6px; max-width: 100%; }
   .pnum { text-align: left; font-size: 72px; }
   .pcard-inner { grid-template-columns: 1fr; gap: 18px; padding: 28px 24px; text-align: center; }
@@ -1484,6 +1484,30 @@ html[data-surface="light"] .cta-block .wash { background: radial-gradient(40% 50
 }
 
 /* ============================================================
+   STICKY MOBILE CTA — thumb-zone bar, <=760px only.
+   Shown via .on (JS: past hero CTA, and no on-screen ask).
+   ============================================================ */
+.sticky-cta { display: none; }
+@media (max-width: 760px) {
+  .sticky-cta {
+    display: block;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 60;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: color-mix(in srgb, var(--bg-0) 86%, transparent);
+    backdrop-filter: blur(14px) saturate(1.1);
+    -webkit-backdrop-filter: blur(14px) saturate(1.1);
+    border-top: 1px solid var(--rule);
+    transform: translateY(110%);
+    transition: transform 0.35s var(--ease);
+    pointer-events: none;
+  }
+  .sticky-cta.on { transform: translateY(0); pointer-events: auto; }
+  .sticky-cta-btn { width: 100%; justify-content: center; }
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 footer.site-footer {
@@ -1552,8 +1576,8 @@ footer.site-footer {
 @media (max-width: 1000px) {
   /* NARRATIVE: stack the messages, no sticky pin, natural height */
   .narrative { height: auto; }
-  .narr-sticky { position: static; height: auto; overflow: visible; padding: 64px 0; }
-  .narr-stack { position: static; display: flex; flex-direction: column; gap: 48px; }
+  .narr-sticky { position: static; height: auto; overflow: visible; padding: 44px 0; }
+  .narr-stack { position: static; display: flex; flex-direction: column; gap: 34px; }
   .narr-msg {
     position: static; transform: none !important; opacity: 1 !important;
     left: auto; top: auto; margin: 0 auto; filter: none !important;
@@ -1563,7 +1587,7 @@ footer.site-footer {
   .wordmf { height: auto; }
   .wmf-sticky { position: static; height: auto; overflow: visible; }
   .wmf-track { width: 100%; flex-direction: column; transform: none !important; }
-  .wmf-slide { width: 100%; flex: 0 0 auto; min-height: auto; padding: 72px 6vw; }
+  .wmf-slide { width: 100%; flex: 0 0 auto; min-height: auto; padding: 48px 6vw; }
   .wmf-sentence .w, .wmf-tail .w, .wmf-big .w {
     transform: none !important; opacity: 1 !important;
   }
@@ -1577,6 +1601,10 @@ footer.site-footer {
    INTAKE — multi-step qualify form (pre-closer)
    ============================================================ */
 .intake { background: var(--bg-0); padding: 124px var(--gutter) 132px; }
+@media (max-width: 760px) {
+  .intake { padding: 64px var(--gutter) 72px; }
+  .itk-head { margin-bottom: 36px; }
+}
 .itk-head { text-align: center; margin-bottom: 56px; }
 .itk-title {
   margin: 14px 0 0;

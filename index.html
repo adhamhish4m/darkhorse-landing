@@ -476,6 +476,109 @@
     </div>
   </section>
 
+  <!-- ============================ INTAKE (multi-step qualify + book) ============================ -->
+  <section class="intake" id="intake" data-screen-label="06c Intake">
+    <div class="wrap">
+      <div class="itk-head">
+        <div class="eyebrow">Skip the small talk</div>
+        <h2 class="itk-title">Tell me what's slowing you down<span class="champ">.</span></h2>
+        <p class="itk-sub">Three steps, takes a minute. I read every answer to work out if I can actually help you. If I can't, I'll tell you straight.</p>
+      </div>
+
+      <form class="itk-card" novalidate autocomplete="on">
+        <div class="itk-progress" aria-hidden="true">
+          <span class="itk-progress-label">1 of 3</span>
+          <span class="itk-progress-track"><span class="itk-progress-fill" style="width:33%"></span></span>
+        </div>
+
+        <!-- honeypot -->
+        <input class="itk-hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <!-- STEP 1 — pain -->
+        <fieldset class="itk-step" data-step="1">
+          <legend class="itk-q">Where's the time going?</legend>
+          <div class="itk-opts" role="radiogroup" aria-label="Where's the time going?">
+            <button type="button" class="itk-opt" data-pain="invoicing">Chasing invoices that should've been paid</button>
+            <button type="button" class="itk-opt" data-pain="admin">Admin is eating my week</button>
+            <button type="button" class="itk-opt" data-pain="leads">Leads slipping through the cracks</button>
+            <button type="button" class="itk-opt" data-pain="other">Something else</button>
+          </div>
+          <div class="itk-other" hidden>
+            <label class="itk-label" for="itk-pain-other">Go on</label>
+            <input class="itk-input" id="itk-pain-other" type="text" maxlength="500" placeholder="a sentence is plenty" />
+            <button type="button" class="btn primary itk-next" data-goto="2"><span class="lbl">next</span></button>
+          </div>
+        </fieldset>
+
+        <!-- STEP 2 — business -->
+        <fieldset class="itk-step" data-step="2" hidden>
+          <legend class="itk-q">What's the business?</legend>
+          <div class="itk-field">
+            <label class="itk-label" for="itk-industry">What you do</label>
+            <input class="itk-input" id="itk-industry" type="text" maxlength="120" placeholder="commercial cleaning, glass, legal, e&#8209;comm..." />
+          </div>
+          <div class="itk-field">
+            <label class="itk-label" for="itk-company">Company name <span class="itk-opt-tag">optional</span></label>
+            <input class="itk-input" id="itk-company" type="text" maxlength="120" autocomplete="organization" placeholder="so I can do my homework" />
+          </div>
+          <div class="itk-field">
+            <span class="itk-label" id="itk-team-label">Team size</span>
+            <div class="itk-opts itk-opts-row" role="radiogroup" aria-labelledby="itk-team-label">
+              <button type="button" class="itk-opt itk-opt-sm" data-team="just-me">just me</button>
+              <button type="button" class="itk-opt itk-opt-sm" data-team="2-5">2 to 5</button>
+              <button type="button" class="itk-opt itk-opt-sm" data-team="6-15">6 to 15</button>
+              <button type="button" class="itk-opt itk-opt-sm" data-team="16-plus">16+</button>
+            </div>
+          </div>
+          <div class="itk-nav">
+            <button type="button" class="itk-back" data-goto="1">back</button>
+            <button type="button" class="btn primary itk-next" data-goto="3"><span class="lbl">next</span></button>
+          </div>
+          <p class="itk-err" role="alert" hidden></p>
+        </fieldset>
+
+        <!-- STEP 3 — contact -->
+        <fieldset class="itk-step" data-step="3" hidden>
+          <legend class="itk-q">Last one. Who am I talking to?</legend>
+          <div class="itk-field">
+            <label class="itk-label" for="itk-name">Name</label>
+            <input class="itk-input" id="itk-name" type="text" maxlength="100" autocomplete="name" placeholder="your name" />
+          </div>
+          <div class="itk-field">
+            <label class="itk-label" for="itk-email">Email</label>
+            <input class="itk-input" id="itk-email" type="email" maxlength="200" autocomplete="email" inputmode="email" placeholder="name@company.com" />
+          </div>
+          <div class="itk-field">
+            <label class="itk-label" for="itk-phone">Phone <span class="itk-opt-tag">optional, if calls are easier</span></label>
+            <input class="itk-input" id="itk-phone" type="tel" maxlength="30" autocomplete="tel" inputmode="tel" placeholder="+1 or +44, either works" />
+          </div>
+          <div class="itk-nav">
+            <button type="button" class="itk-back" data-goto="2">back</button>
+            <button type="submit" class="btn primary magnetic itk-submit">
+              <span class="lbl">send it
+              <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span>
+            </button>
+          </div>
+          <p class="itk-fine">No list, no drip sequence, no "just checking in" emails. This comes straight to me.</p>
+          <p class="itk-err" role="alert" hidden></p>
+        </fieldset>
+
+        <!-- SUCCESS -->
+        <div class="itk-step itk-done" data-step="done" hidden>
+          <p class="itk-done-big">Got it<span class="champ">.</span></p>
+          <p class="itk-done-sub">While you're here, grab a time and we'll talk it through properly.</p>
+          <a class="btn primary magnetic itk-book" href="https://cal.com/adham-hamza/chat" target="_blank" rel="noopener">
+            <span class="lbl">book the call
+            <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span>
+          </a>
+          <p class="itk-fine">Prefer email? I reply within a day either way.</p>
+        </div>
+      </form>
+
+      <p class="itk-alt">Rather just talk? <a href="https://cal.com/adham-hamza/chat" target="_blank" rel="noopener">Book a call directly</a>.</p>
+    </div>
+  </section>
+
   <!-- ============================ FOUNDER / ABOUT ============================ -->
   <style>
     .founder { background: var(--bg-1); padding: 116px var(--gutter) 120px; }
@@ -490,7 +593,7 @@
     .founder .letter a { color:var(--champagne); text-decoration:none; border-bottom:1px solid rgba(150,118,58,.4); transition:border-color .2s var(--ease); }
     .founder .letter a:hover { border-bottom-color:var(--champagne); }
     @media (max-width:760px){
-      .founder { padding:78px var(--gutter) 84px; }
+      .founder { padding:60px var(--gutter) 64px; }
       .founder .letter-wrap { grid-template-columns:1fr; gap:34px; }
       .founder .photo { max-width:256px; }
       .founder-head { margin-bottom:44px; }
@@ -597,109 +700,6 @@
     </div>
   </section>
 
-  <!-- ============================ INTAKE (multi-step qualify + book) ============================ -->
-  <section class="intake" id="intake" data-screen-label="06c Intake">
-    <div class="wrap">
-      <div class="itk-head">
-        <div class="eyebrow">Skip the small talk</div>
-        <h2 class="itk-title">Tell me what's slowing you down<span class="champ">.</span></h2>
-        <p class="itk-sub">Three steps, takes a minute. I read every answer to work out if I can actually help you. If I can't, I'll tell you straight.</p>
-      </div>
-
-      <form class="itk-card" novalidate autocomplete="on">
-        <div class="itk-progress" aria-hidden="true">
-          <span class="itk-progress-label">1 of 3</span>
-          <span class="itk-progress-track"><span class="itk-progress-fill" style="width:33%"></span></span>
-        </div>
-
-        <!-- honeypot -->
-        <input class="itk-hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-        <!-- STEP 1 — pain -->
-        <fieldset class="itk-step" data-step="1">
-          <legend class="itk-q">Where's the time going?</legend>
-          <div class="itk-opts" role="radiogroup" aria-label="Where's the time going?">
-            <button type="button" class="itk-opt" data-pain="invoicing">Chasing invoices that should've been paid</button>
-            <button type="button" class="itk-opt" data-pain="admin">Admin is eating my week</button>
-            <button type="button" class="itk-opt" data-pain="leads">Leads slipping through the cracks</button>
-            <button type="button" class="itk-opt" data-pain="other">Something else</button>
-          </div>
-          <div class="itk-other" hidden>
-            <label class="itk-label" for="itk-pain-other">Go on</label>
-            <input class="itk-input" id="itk-pain-other" type="text" maxlength="500" placeholder="a sentence is plenty" />
-            <button type="button" class="btn primary itk-next" data-goto="2"><span class="lbl">next</span></button>
-          </div>
-        </fieldset>
-
-        <!-- STEP 2 — business -->
-        <fieldset class="itk-step" data-step="2" hidden>
-          <legend class="itk-q">What's the business?</legend>
-          <div class="itk-field">
-            <label class="itk-label" for="itk-industry">What you do</label>
-            <input class="itk-input" id="itk-industry" type="text" maxlength="120" placeholder="commercial cleaning, glass, legal, e&#8209;comm..." />
-          </div>
-          <div class="itk-field">
-            <label class="itk-label" for="itk-company">Company name <span class="itk-opt-tag">optional</span></label>
-            <input class="itk-input" id="itk-company" type="text" maxlength="120" autocomplete="organization" placeholder="so I can do my homework" />
-          </div>
-          <div class="itk-field">
-            <span class="itk-label" id="itk-team-label">Team size</span>
-            <div class="itk-opts itk-opts-row" role="radiogroup" aria-labelledby="itk-team-label">
-              <button type="button" class="itk-opt itk-opt-sm" data-team="just-me">just me</button>
-              <button type="button" class="itk-opt itk-opt-sm" data-team="2-5">2 to 5</button>
-              <button type="button" class="itk-opt itk-opt-sm" data-team="6-15">6 to 15</button>
-              <button type="button" class="itk-opt itk-opt-sm" data-team="16-plus">16+</button>
-            </div>
-          </div>
-          <div class="itk-nav">
-            <button type="button" class="itk-back" data-goto="1">back</button>
-            <button type="button" class="btn primary itk-next" data-goto="3"><span class="lbl">next</span></button>
-          </div>
-          <p class="itk-err" role="alert" hidden></p>
-        </fieldset>
-
-        <!-- STEP 3 — contact -->
-        <fieldset class="itk-step" data-step="3" hidden>
-          <legend class="itk-q">Last one. Who am I talking to?</legend>
-          <div class="itk-field">
-            <label class="itk-label" for="itk-name">Name</label>
-            <input class="itk-input" id="itk-name" type="text" maxlength="100" autocomplete="name" placeholder="your name" />
-          </div>
-          <div class="itk-field">
-            <label class="itk-label" for="itk-email">Email</label>
-            <input class="itk-input" id="itk-email" type="email" maxlength="200" autocomplete="email" inputmode="email" placeholder="name@company.com" />
-          </div>
-          <div class="itk-field">
-            <label class="itk-label" for="itk-phone">Phone <span class="itk-opt-tag">optional, if calls are easier</span></label>
-            <input class="itk-input" id="itk-phone" type="tel" maxlength="30" autocomplete="tel" inputmode="tel" placeholder="+1 or +44, either works" />
-          </div>
-          <div class="itk-nav">
-            <button type="button" class="itk-back" data-goto="2">back</button>
-            <button type="submit" class="btn primary magnetic itk-submit">
-              <span class="lbl">send it
-              <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span>
-            </button>
-          </div>
-          <p class="itk-fine">No list, no drip sequence, no "just checking in" emails. This comes straight to me.</p>
-          <p class="itk-err" role="alert" hidden></p>
-        </fieldset>
-
-        <!-- SUCCESS -->
-        <div class="itk-step itk-done" data-step="done" hidden>
-          <p class="itk-done-big">Got it<span class="champ">.</span></p>
-          <p class="itk-done-sub">While you're here, grab a time and we'll talk it through properly.</p>
-          <a class="btn primary magnetic itk-book" href="https://cal.com/adham-hamza/chat" target="_blank" rel="noopener">
-            <span class="lbl">book the call
-            <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span>
-          </a>
-          <p class="itk-fine">Prefer email? I reply within a day either way.</p>
-        </div>
-      </form>
-
-      <p class="itk-alt">Rather just talk? <a href="https://cal.com/adham-hamza/chat" target="_blank" rel="noopener">Book a call directly</a>.</p>
-    </div>
-  </section>
-
   <!-- ============================ CLOSER (urgency) ============================ -->
   <section class="closer" id="closer" data-screen-label="07 Closer">
     <div class="closer-glow" aria-hidden="true"></div>
@@ -733,6 +733,45 @@
     <a href="mailto:adham@thedarkhorseai.com">contact</a>
   </nav>
 </footer>
+
+<!-- ============================ STICKY MOBILE CTA (thumb zone) ============================ -->
+<div class="sticky-cta" data-screen-label="sticky-bar" aria-hidden="true">
+  <a class="btn primary sticky-cta-btn" href="https://cal.com/adham-hamza/chat" target="_blank" rel="noopener" tabindex="-1">
+    <span class="lbl">let's chat
+    <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span>
+  </a>
+</div>
+<script>
+  // Mobile-only sticky CTA: appears once the hero CTA scrolls away, hides while a
+  // section with its own ask (intake form, closer) is on screen — one ask at a time.
+  // Clicks are tracked by the existing cal.com click listener (location: "sticky-bar").
+  (function () {
+    var bar = document.querySelector('.sticky-cta');
+    if (!bar || !('IntersectionObserver' in window)) return;
+    var btn = bar.querySelector('a');
+    var heroCta = document.querySelector('.hero .cta-row');
+    var blockers = [document.getElementById('intake'), document.getElementById('closer')].filter(Boolean);
+    var pastHero = false, visible = new Set();
+    function apply() {
+      var on = pastHero && visible.size === 0;
+      bar.classList.toggle('on', on);
+      bar.setAttribute('aria-hidden', on ? 'false' : 'true');
+      btn.setAttribute('tabindex', on ? '0' : '-1');
+    }
+    if (heroCta) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; });
+        apply();
+      }).observe(heroCta);
+    }
+    blockers.forEach(function (el) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { e.isIntersecting ? visible.add(el) : visible.delete(el); });
+        apply();
+      }, { rootMargin: '0px 0px -15% 0px' }).observe(el);
+    });
+  })();
+</script>
 
 <!-- ============================ HERO TESTIMONIAL SNAKE + SPOTLIGHT ============================ -->
 <script type="text/javascript">
