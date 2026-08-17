@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- @dsCard group="Brand" name="Landing Page" subtitle="Centered hero, trust badge, floating proof" -->
-<html lang="en" data-surface="dark" data-copy="1">
+<html lang="en" data-surface="dark" data-copy="2">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,22 +22,10 @@
 <meta name="twitter:image" content="https://www.thedarkhorseai.com/og-image.png" />
 <link rel="canonical" href="https://www.thedarkhorseai.com/" />
 
-<!-- Hero copy A/B. Runs before paint so the losing variant never flashes.
-     Bucket is sticky per browser; ?hero_copy=1|2 forces one for QA without persisting. -->
-<script>
-  (function () {
-    var KEY = 'dh_hero_copy', VARIANTS = ['1', '2'], v = null;
-    try { v = localStorage.getItem(KEY); } catch (e) {}
-    if (VARIANTS.indexOf(v) === -1) {
-      v = VARIANTS[Math.floor(Math.random() * VARIANTS.length)];
-      try { localStorage.setItem(KEY, v); } catch (e) {}
-    }
-    var forced = /[?&]hero_copy=([^&]+)/.exec(location.search);
-    if (forced && VARIANTS.indexOf(forced[1]) !== -1) v = forced[1];
-    document.documentElement.setAttribute('data-copy', v);
-    window.__heroCopy = v;
-  })();
-</script>
+<!-- Hero copy: variant 2 won the A/B test (7.0% vs 3.7% booking-click rate, 60 days
+     to 2026-08-17) and is now locked. __heroCopy stays defined so GA4 events keep the
+     same param and the historical funnel remains comparable. -->
+<script>window.__heroCopy = '2';</script>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B7WE9FN1WG"></script>
@@ -249,8 +237,8 @@
 <nav class="top">
   <div class="nav-inner">
     <a href="#top" class="brand" aria-label="dark horse ai home"><img class="wm-img wm-img-lockup" src="/lockup-dark.svg" alt="dark horse ai" /></a>
-    <a class="btn primary sm magnetic" href="https://cal.com/adham-hamza/chat" target="_blank" rel="noopener">
-      <span class="lbl">let's chat
+    <a class="btn primary sm magnetic" href="#intake">
+      <span class="lbl"><span class="lbl-full">tell me what's slowing you down</span><span class="lbl-short">what's slowing you down?</span>
       <svg class="arr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span>
     </a>
   </div>
@@ -282,24 +270,21 @@
         <span class="ln" aria-hidden="true"></span>
       </div>
 
-      <!-- hero copy — variants are A/B tested, see the hero_copy script in <head> -->
-      <div class="copyset" data-c="1">
-        <h1>Get your life back<br/><span class="hi">without having to hire.</span></h1>
-        <p class="sub">We find what's slowing your business down, and build the AI to fix it.</p>
-      </div>
-
+      <!-- hero copy — variant 2 locked after winning the A/B test (see head) -->
       <div class="copyset" data-c="2">
-        <h1>Get back 10+ hours/week<sup class="ast"><abbr title="on average">*</abbr></sup><br/><span class="hi">without having to hire.</span></h1>
+        <h1>Get back 10+ hours/week<br/><span class="hi">without having to hire.</span></h1>
         <p class="sub">We find what's slowing your business down, and build the AI to fix it.</p>
-        <p class="fine"><span class="champ">*</span> on average</p>
+        <p class="proof-strip">22 hrs/wk of admin found inside one cleaning company <span class="champ">&middot;</span> invoices send themselves <span class="champ">&middot;</span> after-hours calls answered</p>
       </div>
 
       <div class="cta-row">
-        <a class="btn primary magnetic" href="https://cal.com/adham-hamza/chat" target="_blank" rel="noopener">
-          <span class="lbl">let's chat
+        <a class="btn primary magnetic" href="#intake">
+          <span class="lbl">tell me what's slowing you down
           <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span>
         </a>
       </div>
+      <p class="cta-note">100% money back within 30 days. No questions asked.</p>
+      <p class="cta-alt">Rather just talk? <a href="https://cal.com/adham-hamza/chat" target="_blank" rel="noopener">Book a call directly</a>.</p>
 
     </div>
   </section>
@@ -368,7 +353,6 @@
           <p class="grt-big">no questions asked.</p>
         </div>
       </div>
-      <div class="wmf-progress" aria-hidden="true"><span class="wmf-progress-fill"></span></div>
     </div>
   </section>
 
@@ -514,8 +498,17 @@
         <fieldset class="itk-step" data-step="2" hidden>
           <legend class="itk-q">What's the business?</legend>
           <div class="itk-field">
-            <label class="itk-label" for="itk-industry">What you do</label>
-            <input class="itk-input" id="itk-industry" type="text" maxlength="120" placeholder="commercial cleaning, glass, legal, e&#8209;comm..." />
+            <span class="itk-label" id="itk-ind-label">What you do</span>
+            <div class="itk-opts itk-opts-ind" role="radiogroup" aria-labelledby="itk-ind-label">
+              <button type="button" class="itk-opt itk-opt-sm" data-industry="commercial cleaning">commercial cleaning</button>
+              <button type="button" class="itk-opt itk-opt-sm" data-industry="trades &amp; field services">trades &amp; field services</button>
+              <button type="button" class="itk-opt itk-opt-sm" data-industry="agency &amp; services">agency &amp; services</button>
+              <button type="button" class="itk-opt itk-opt-sm" data-industry="e-commerce">e-commerce</button>
+              <button type="button" class="itk-opt itk-opt-sm" data-industry="other">something else</button>
+            </div>
+            <div class="itk-ind-other" hidden>
+              <input class="itk-input" id="itk-industry" type="text" maxlength="120" placeholder="a sentence is plenty" aria-label="What you do" />
+            </div>
           </div>
           <div class="itk-field">
             <label class="itk-label" for="itk-company">Company name <span class="itk-opt-tag">optional</span></label>
@@ -560,6 +553,7 @@
             </button>
           </div>
           <p class="itk-fine">No list, no drip sequence, no "just checking in" emails. This comes straight to me.</p>
+          <p class="itk-fine">I read this personally. You'll hear back from me within 24 hours.</p>
           <p class="itk-err" role="alert" hidden></p>
         </fieldset>
 
@@ -728,6 +722,8 @@
   <nav class="ft-links">
     <a href="/ai-for-commercial-cleaning">commercial cleaning</a>
     <span class="sep" aria-hidden="true">|</span>
+    <a href="/ai-for-small-business">ai for small business</a>
+    <span class="sep" aria-hidden="true">|</span>
     <a href="https://www.linkedin.com/in/adham-hamza/" target="_blank" rel="noopener">linkedin</a>
     <span class="sep" aria-hidden="true">|</span>
     <a href="mailto:adham@thedarkhorseai.com">contact</a>
@@ -736,8 +732,8 @@
 
 <!-- ============================ STICKY MOBILE CTA (thumb zone) ============================ -->
 <div class="sticky-cta" data-screen-label="sticky-bar" aria-hidden="true">
-  <a class="btn primary sticky-cta-btn" href="https://cal.com/adham-hamza/chat" target="_blank" rel="noopener" tabindex="-1">
-    <span class="lbl">let's chat
+  <a class="btn primary sticky-cta-btn" href="#intake" tabindex="-1">
+    <span class="lbl">tell me what's slowing you down
     <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span>
   </a>
 </div>
@@ -955,148 +951,6 @@
   })();
 </script>
 
-<!-- ============================ PROMISE WORD ASSEMBLY ============================ -->
-<script type="text/javascript">
-  (function () {
-    var section = document.getElementById('promise');
-    if (!section) return;
-    var sticky = section.querySelector('.wmf-sticky');
-    var track = section.querySelector('.wmf-track');
-    var prog = section.querySelector('.wmf-progress-fill');
-    var words = Array.prototype.slice.call(section.querySelectorAll('.w'));
-    if (!words.length) return;
-    if (window.matchMedia && (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(max-width: 1000px)').matches)) return;
-
-    var N = words.length;
-    var nx = [], ny = [], dx = [], dy = [], rot = [], sc = [], ph = [];
-    var raf = null, lastP = 0;
-
-    function clamp(v, a, b) { return Math.min(Math.max(v, a), b); }
-
-    function layout() {
-      words.forEach(function (w) { w.style.transform = 'none'; });
-      var c = sticky.getBoundingClientRect();
-      var W = c.width, H = c.height;
-      words.forEach(function (w, i) {
-        var r = w.getBoundingClientRect();
-        nx[i] = (r.left + r.width / 2) - c.left;
-        ny[i] = (r.top + r.height / 2) - c.top;
-      });
-      words.forEach(function (w, i) {
-        var sx = (0.05 + 0.9 * Math.random()) * W;
-        var sy = (0.06 + 0.88 * Math.random()) * H;
-        dx[i] = sx - nx[i];
-        dy[i] = sy - ny[i];
-        rot[i] = (Math.random() * 2 - 1) * 26;
-        sc[i] = 0.55 + Math.random() * 1.3;
-        ph[i] = Math.random() * 0.34;
-      });
-      apply(lastP);
-    }
-
-    function apply(p) {
-      lastP = p;
-      // phase A: words assemble (0 -> 0.42); phase B: track slides to guarantee (0.5 -> 0.82)
-      var aP = clamp(p / 0.42, 0, 1);
-      for (var i = 0; i < N; i++) {
-        var local = clamp((aP - ph[i]) / (1 - 0.34), 0, 1);
-        var e = 1 - Math.pow(1 - local, 3);   // easeOutCubic
-        var inv = 1 - e;
-        words[i].style.transform =
-          'translate(' + (dx[i] * inv).toFixed(1) + 'px,' + (dy[i] * inv).toFixed(1) + 'px) ' +
-          'rotate(' + (rot[i] * inv).toFixed(1) + 'deg) ' +
-          'scale(' + (1 + (sc[i] - 1) * inv).toFixed(3) + ')';
-        words[i].style.opacity = (0.16 + 0.84 * e).toFixed(3);
-      }
-      if (track) {
-        var sP = clamp((p - 0.5) / 0.32, 0, 1);
-        var sE = 1 - Math.pow(1 - sP, 3);
-        track.style.transform = 'translateX(' + (-sE * window.innerWidth).toFixed(1) + 'px)';
-      }
-      if (prog) { prog.style.transform = 'scaleX(' + p.toFixed(3) + ')'; }
-    }
-
-    function progress() {
-      var rect = section.getBoundingClientRect();
-      var total = section.offsetHeight - window.innerHeight;
-      return clamp(-rect.top / total, 0, 1);
-    }
-    function onScroll() {
-      if (!raf) raf = requestAnimationFrame(function () { raf = null; apply(progress()); });
-    }
-
-    var rt = null;
-    function onResize() { clearTimeout(rt); rt = setTimeout(layout, 120); }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize);
-    // fonts can shift metrics — re-measure once they're ready
-    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(layout); }
-    layout();
-    apply(progress());
-  })();
-</script>
-
-<!-- ============================ NARRATIVE SCROLL ============================ -->
-<script type="text/javascript">
-  (function () {
-    var section = document.getElementById('story');
-    if (!section) return;
-    var msgs = Array.prototype.slice.call(section.querySelectorAll('.narr-msg'));
-    if (!msgs.length) return;
-    var reduce = window.matchMedia && (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(max-width: 1000px)').matches);
-    if (reduce) return; /* CSS fallback shows them stacked */
-
-    var N = msgs.length;
-    var raf = null;
-
-    // Map raw scroll progress -> centered-message index, but give each
-    // statement its own scroll "slot" where it stays put (sharp + centered)
-    // for most of the slot, then hands off quickly to the next. So any
-    // resting scroll position lands on a clear statement instead of a
-    // blurred in-between — no need to balance the scroll perfectly.
-    var HOLD = 0.62; // fraction of each slot the statement stays centered
-    function dwellPos(p) {
-      var slot = p * N;                       // 0 .. N — one slot per statement
-      var k = Math.min(Math.floor(slot), N - 1);
-      if (k >= N - 1) return N - 1;           // last statement holds to the end
-      var f = slot - k;                       // 0..1 within this slot
-      var t = f <= HOLD ? 0 : (f - HOLD) / (1 - HOLD);
-      t = t * t * (3 - 2 * t);                // smoothstep the handoff
-      return k + t;
-    }
-
-    function update() {
-      raf = null;
-      var rect = section.getBoundingClientRect();
-      var vh = window.innerHeight;
-      var total = section.offsetHeight - vh;
-      // progress through the section: 0 when its top hits viewport top, 1 at the end
-      var p = Math.min(Math.max(-rect.top / total, 0), 1);
-      // which message is centered (0 .. N-1), with a dwell on each statement
-      var pos = dwellPos(p);
-      var spacing = vh * 0.62;
-
-      for (var i = 0; i < N; i++) {
-        var rel = i - pos;              // 0 = centered, +below / -above
-        var dist = Math.abs(rel);
-        var y = rel * spacing;
-        var vis = Math.max(0, 1 - dist * 0.85);
-        var e = vis * vis * (3 - 2 * vis); // smoothstep
-        var blur = Math.min(dist * 7, 14);
-        var m = msgs[i];
-        m.style.transform = 'translate(-50%, calc(-50% + ' + y.toFixed(1) + 'px)) scale(' + (0.92 + e * 0.08).toFixed(3) + ')';
-        m.style.opacity = e.toFixed(3);
-        m.style.filter = e > 0.985 ? 'none' : 'blur(' + blur.toFixed(2) + 'px)';
-      }
-    }
-    function onScroll() { if (!raf) raf = requestAnimationFrame(update); }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
-  })();
-</script>
-
 <!-- ============================ MAGNETIC CTA ============================ -->
 <script type="text/javascript">
   (function () {
@@ -1135,10 +989,13 @@
   // the variant attached to cta_click while the page_view path was broken — keep it.
   (function () {
     document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('a[href*="cal.com"]');
+      var a = e.target.closest && e.target.closest('a[href*="cal.com"], a[href="#intake"]');
       if (!a || typeof gtag !== 'function') return;
       var sec = a.closest('[data-screen-label]');
-      gtag('event', 'cta_click', {
+      // cta_click stays booking-only so the historical key event keeps its meaning;
+      // clicks that jump to the form get their own event.
+      var name = a.getAttribute('href') === '#intake' ? 'intake_cta_click' : 'cta_click';
+      gtag('event', name, {
         hero_copy: window.__heroCopy,
         location: sec ? sec.getAttribute('data-screen-label') : 'nav'
       });
@@ -1156,7 +1013,7 @@
     root.querySelectorAll('.itk-step').forEach(function (el) { steps[el.getAttribute('data-step')] = el; });
     var fill = root.querySelector('.itk-progress-fill');
     var plabel = root.querySelector('.itk-progress-label');
-    var state = { pain: null, painOther: '', teamSize: null };
+    var state = { pain: null, painOther: '', industry: null, teamSize: null };
     var started = false;
 
     // traffic source, captured at load
@@ -1200,6 +1057,23 @@
       });
     });
 
+    // step 2: industry chips ("something else" reveals a one-line text box)
+    var indOtherWrap = steps['2'].querySelector('.itk-ind-other');
+    steps['2'].querySelectorAll('.itk-opt[data-industry]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        steps['2'].querySelectorAll('.itk-opt[data-industry]').forEach(function (b) { b.classList.remove('sel'); });
+        btn.classList.add('sel');
+        state.industry = btn.getAttribute('data-industry');
+        var other = state.industry === 'other';
+        indOtherWrap.hidden = !other;
+        if (other) indOtherWrap.querySelector('input').focus({ preventScroll: true });
+      });
+    });
+    function industryValue() {
+      if (state.industry === 'other') return document.getElementById('itk-industry').value.trim();
+      return state.industry || '';
+    }
+
     // step 2: team size options
     steps['2'].querySelectorAll('.itk-opt[data-team]').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -1217,8 +1091,7 @@
           state.painOther = document.getElementById('itk-pain-other').value.trim();
         }
         if (n === 3) {
-          var industry = document.getElementById('itk-industry').value.trim();
-          if (!industry) { err(steps['2'], 'Tell me what the business does, one line is fine.'); return; }
+          if (!industryValue()) { err(steps['2'], 'Tell me what the business does, one line is fine.'); return; }
           if (!state.teamSize) { err(steps['2'], 'Pick a team size.'); return; }
           err(steps['2'], '');
         }
@@ -1250,7 +1123,7 @@
         phone: document.getElementById('itk-phone').value.trim(),
         pain: state.pain,
         painOther: state.painOther,
-        industry: document.getElementById('itk-industry').value.trim(),
+        industry: industryValue(),
         company: document.getElementById('itk-company').value.trim(),
         teamSize: state.teamSize,
         meta: meta,
@@ -1362,8 +1235,10 @@
       function clamp(v) { return Math.max(0, Math.min(v, maxScroll())); }
       function stick() {
         cur += (target - cur) * 0.085;
-        if (Math.abs(target - cur) < 0.4) { cur = target; window.scrollTo(0, cur); sraf = null; return; }
-        window.scrollTo(0, cur); sraf = requestAnimationFrame(stick);
+        /* behavior:'instant' so the CSS scroll-behavior:smooth (used by the #intake
+           anchor CTAs) doesn't re-animate each per-frame scrollTo */
+        if (Math.abs(target - cur) < 0.4) { cur = target; window.scrollTo({ top: cur, behavior: 'instant' }); sraf = null; return; }
+        window.scrollTo({ top: cur, behavior: 'instant' }); sraf = requestAnimationFrame(stick);
       }
       window.addEventListener('wheel', function (e) {
         if (e.ctrlKey) return;

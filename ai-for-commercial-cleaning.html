@@ -130,6 +130,21 @@
   .fb-route .arrow { color:var(--champagne); font-weight:700; }
   .ava { width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg,#c9a86a,#96763A); flex:none; }
 
+  /* proof section: Randy's quote + the number (added 2026-08-17) */
+  .vproof { text-align: center; }
+  .vproof .wrap { max-width: 720px; }
+  .vquote { margin: 0; }
+  .vquote blockquote { margin: 0; font-family: 'Inter', sans-serif; font-size: clamp(19px, 2.4vw, 24px);
+    line-height: 1.55; color: var(--fg-2); }
+  .vquote .hl { color: var(--fg-1); }
+  .vquote figcaption { margin-top: 18px; display: flex; flex-direction: column; gap: 2px; }
+  .vquote .who { font-weight: 600; color: var(--fg-1); }
+  .vquote .co { font-size: 13px; color: var(--fg-3); }
+  .vproof-line { margin: 26px auto 0; font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--champagne);
+    border: 1px solid var(--rule); border-radius: 999px; display: inline-block; padding: 8px 18px; }
+  .cta-note { margin: 16px auto 0; font-size: 13px; color: var(--fg-3); text-align: center; }
+
   @media (max-width: 760px) {
     .vgrid { grid-template-columns: 1fr; }
     .vsec { padding: 52px var(--gutter); }
@@ -209,8 +224,8 @@
 <nav class="top">
   <div class="nav-inner">
     <a href="/" class="brand" aria-label="dark horse ai home"><img class="wm-img wm-img-lockup" src="/lockup-dark.svg" alt="dark horse ai" /></a>
-    <a class="btn primary sm magnetic" href="https://cal.com/adham-hamza/the-assessment" target="_blank" rel="noopener">
-      <span class="lbl">let's chat
+    <a class="btn primary sm magnetic" href="#intake">
+      <span class="lbl"><span class="lbl-full">tell me what's slowing you down</span><span class="lbl-short">what's slowing you down?</span>
       <svg class="arr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span>
     </a>
   </div>
@@ -224,11 +239,12 @@
     <h1>AI for commercial<br/><span class="hi">cleaning companies.</span></h1>
     <p class="sub">You didn't start a cleaning company to chase invoices and answer the phone at 9pm. But that's where the week goes. We build the AI that takes it off your plate. Here's what we've built so far.</p>
     <div class="cta-row">
-      <a class="btn primary magnetic" href="https://cal.com/adham-hamza/the-assessment" target="_blank" rel="noopener">
-        <span class="lbl">start with the assessment
+      <a class="btn primary magnetic" href="#intake">
+        <span class="lbl">tell me what's slowing you down
         <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span>
       </a>
     </div>
+    <p class="cta-note">100% money back within 30 days. No questions asked.</p>
   </section>
 
   <!-- FOUR JOBS -->
@@ -297,6 +313,17 @@
     </div>
   </section>
 
+  <!-- PROOF — Randy + the number (added 2026-08-17) -->
+  <section class="vsec vproof">
+    <div class="wrap">
+      <figure class="vquote">
+        <blockquote>Adham did excellent work for us. Knowledgeable, easy to communicate with, and genuinely professional. <span class="hl">The process was smooth and the results speak for themselves.</span> I'd absolutely recommend him.</blockquote>
+        <figcaption><span class="who">Randy Clarke</span><span class="co">CEO, Go Janitorial</span></figcaption>
+      </figure>
+      <p class="vproof-line">22 hrs/wk of admin found inside one cleaning company</p>
+    </div>
+  </section>
+
   <!-- WHY DARK HORSE AI -->
   <section class="vsec vwhy">
     <div class="wrap">
@@ -332,6 +359,106 @@
     </div>
   </section>
 
+  <!-- INTAKE (same 3-step qualify form as the homepage; industry pre-filled) -->
+  <section class="intake" id="intake">
+    <div class="wrap">
+      <div class="itk-head">
+        <div class="eyebrow">Skip the small talk</div>
+        <h2 class="itk-title">Tell me what's slowing you down<span class="champ">.</span></h2>
+        <p class="itk-sub">Three steps, takes a minute. I read every answer to work out if I can actually help you. If I can't, I'll tell you straight.</p>
+      </div>
+
+      <form class="itk-card" novalidate autocomplete="on">
+        <div class="itk-progress" aria-hidden="true">
+          <span class="itk-progress-label">1 of 3</span>
+          <span class="itk-progress-track"><span class="itk-progress-fill" style="width:33%"></span></span>
+        </div>
+
+        <!-- honeypot -->
+        <input class="itk-hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <!-- STEP 1 — pain -->
+        <fieldset class="itk-step" data-step="1">
+          <legend class="itk-q">Where's the time going?</legend>
+          <div class="itk-opts" role="radiogroup" aria-label="Where's the time going?">
+            <button type="button" class="itk-opt" data-pain="invoicing">Chasing invoices that should've been paid</button>
+            <button type="button" class="itk-opt" data-pain="admin">Admin is eating my week</button>
+            <button type="button" class="itk-opt" data-pain="leads">Leads slipping through the cracks</button>
+            <button type="button" class="itk-opt" data-pain="other">Something else</button>
+          </div>
+          <div class="itk-other" hidden>
+            <label class="itk-label" for="itk-pain-other">Go on</label>
+            <input class="itk-input" id="itk-pain-other" type="text" maxlength="500" placeholder="a sentence is plenty" />
+            <button type="button" class="btn primary itk-next" data-goto="2"><span class="lbl">next</span></button>
+          </div>
+        </fieldset>
+
+        <!-- STEP 2 — business (industry is pre-filled: commercial cleaning) -->
+        <fieldset class="itk-step" data-step="2" hidden>
+          <legend class="itk-q">What's the business?</legend>
+          <div class="itk-field">
+            <label class="itk-label" for="itk-company">Company name <span class="itk-opt-tag">optional</span></label>
+            <input class="itk-input" id="itk-company" type="text" maxlength="120" autocomplete="organization" placeholder="so I can do my homework" />
+          </div>
+          <div class="itk-field">
+            <span class="itk-label" id="itk-team-label">Team size</span>
+            <div class="itk-opts itk-opts-row" role="radiogroup" aria-labelledby="itk-team-label">
+              <button type="button" class="itk-opt itk-opt-sm" data-team="just-me">just me</button>
+              <button type="button" class="itk-opt itk-opt-sm" data-team="2-5">2 to 5</button>
+              <button type="button" class="itk-opt itk-opt-sm" data-team="6-15">6 to 15</button>
+              <button type="button" class="itk-opt itk-opt-sm" data-team="16-plus">16+</button>
+            </div>
+          </div>
+          <div class="itk-nav">
+            <button type="button" class="itk-back" data-goto="1">back</button>
+            <button type="button" class="btn primary itk-next" data-goto="3"><span class="lbl">next</span></button>
+          </div>
+          <p class="itk-err" role="alert" hidden></p>
+        </fieldset>
+
+        <!-- STEP 3 — contact -->
+        <fieldset class="itk-step" data-step="3" hidden>
+          <legend class="itk-q">Last one. Who am I talking to?</legend>
+          <div class="itk-field">
+            <label class="itk-label" for="itk-name">Name</label>
+            <input class="itk-input" id="itk-name" type="text" maxlength="100" autocomplete="name" placeholder="your name" />
+          </div>
+          <div class="itk-field">
+            <label class="itk-label" for="itk-email">Email</label>
+            <input class="itk-input" id="itk-email" type="email" maxlength="200" autocomplete="email" inputmode="email" placeholder="name@company.com" />
+          </div>
+          <div class="itk-field">
+            <label class="itk-label" for="itk-phone">Phone <span class="itk-opt-tag">optional, if calls are easier</span></label>
+            <input class="itk-input" id="itk-phone" type="tel" maxlength="30" autocomplete="tel" inputmode="tel" placeholder="+1 or +44, either works" />
+          </div>
+          <div class="itk-nav">
+            <button type="button" class="itk-back" data-goto="2">back</button>
+            <button type="submit" class="btn primary magnetic itk-submit">
+              <span class="lbl">send it
+              <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span>
+            </button>
+          </div>
+          <p class="itk-fine">No list, no drip sequence, no "just checking in" emails. This comes straight to me.</p>
+          <p class="itk-fine">I read this personally. You'll hear back from me within 24 hours.</p>
+          <p class="itk-err" role="alert" hidden></p>
+        </fieldset>
+
+        <!-- SUCCESS -->
+        <div class="itk-step itk-done" data-step="done" hidden>
+          <p class="itk-done-big">Got it<span class="champ">.</span></p>
+          <p class="itk-done-sub">While you're here, grab a time and we'll talk it through properly.</p>
+          <a class="btn primary magnetic itk-book" href="https://cal.com/adham-hamza/chat" target="_blank" rel="noopener">
+            <span class="lbl">book the call
+            <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg></span>
+          </a>
+          <p class="itk-fine">Prefer email? I reply within a day either way.</p>
+        </div>
+      </form>
+
+      <p class="itk-alt">Rather just talk? <a href="https://cal.com/adham-hamza/chat" target="_blank" rel="noopener">Book a call directly</a>.</p>
+    </div>
+  </section>
+
   <!-- CLOSE -->
   <section class="vsec vclose">
     <div class="wrap">
@@ -354,11 +481,155 @@
   <a class="ft-mark" href="/" aria-label="dark horse ai home"><img class="wm-img wm-img-ft" src="/wordmark-dark.svg" alt="dark horse ai" /></a>
   <span class="ft-line" aria-hidden="true"></span>
   <nav class="ft-links">
+    <a href="/ai-for-small-business">ai for small business</a>
+    <span class="sep" aria-hidden="true">|</span>
     <a href="https://www.linkedin.com/in/adham-hamza/" target="_blank" rel="noopener">linkedin</a>
     <span class="sep" aria-hidden="true">|</span>
     <a href="mailto:adham@thedarkhorseai.com">contact</a>
   </nav>
 </footer>
+
+<!-- Intake form (same flow as the homepage; industry pre-filled, no industry step) -->
+<script type="text/javascript">
+  (function () {
+    var INDUSTRY = 'commercial cleaning';
+    var root = document.getElementById('intake');
+    if (!root) return;
+    var form = root.querySelector('form');
+    var steps = {};
+    root.querySelectorAll('.itk-step').forEach(function (el) { steps[el.getAttribute('data-step')] = el; });
+    var fill = root.querySelector('.itk-progress-fill');
+    var plabel = root.querySelector('.itk-progress-label');
+    var state = { pain: null, painOther: '', teamSize: null };
+    var started = false;
+
+    // traffic source, captured at load
+    var meta = { path: location.pathname, ref: document.referrer || '', utm: '' };
+    try {
+      var qs = new URLSearchParams(location.search), parts = [];
+      qs.forEach(function (v, k) { if (k.indexOf('utm_') === 0) parts.push(k + '=' + v); });
+      meta.utm = parts.join('&');
+    } catch (e) { /* old browsers: skip */ }
+
+    function track(name) { if (typeof gtag === 'function') gtag('event', name, { location: 'cleaning-lp' }); }
+    function first(n) { return steps[n].querySelector('input, button'); }
+    function go(n) {
+      Object.keys(steps).forEach(function (k) { steps[k].hidden = k !== String(n); });
+      if (fill && n !== 'done') fill.style.width = (n * 33) + '%';
+      if (plabel) plabel.textContent = n === 'done' ? 'done' : n + ' of 3';
+      if (fill && n === 'done') fill.style.width = '100%';
+      if (n !== 'done' && n !== 1) { var f = first(n); if (f) f.focus({ preventScroll: true }); }
+      if (!started) { started = true; track('intake_start'); }
+      if (n === 2 || n === 3) track('intake_step_' + n);
+    }
+    function err(stepEl, msg) {
+      var p = stepEl.querySelector('.itk-err');
+      if (p) { p.textContent = msg || ''; p.hidden = !msg; }
+    }
+
+    // step 1: pain options
+    var otherWrap = steps['1'].querySelector('.itk-other');
+    steps['1'].querySelectorAll('.itk-opt[data-pain]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        steps['1'].querySelectorAll('.itk-opt').forEach(function (b) { b.classList.remove('sel'); });
+        btn.classList.add('sel');
+        state.pain = btn.getAttribute('data-pain');
+        if (state.pain === 'other') {
+          otherWrap.hidden = false;
+          otherWrap.querySelector('input').focus({ preventScroll: true });
+        } else {
+          otherWrap.hidden = true;
+          setTimeout(function () { go(2); }, 180);
+        }
+      });
+    });
+
+    // step 2: team size options
+    steps['2'].querySelectorAll('.itk-opt[data-team]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        steps['2'].querySelectorAll('.itk-opt[data-team]').forEach(function (b) { b.classList.remove('sel'); });
+        btn.classList.add('sel');
+        state.teamSize = btn.getAttribute('data-team');
+      });
+    });
+
+    // nav buttons
+    root.querySelectorAll('[data-goto]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var n = parseInt(btn.getAttribute('data-goto'), 10);
+        if (n === 2 && state.pain === 'other') {
+          state.painOther = document.getElementById('itk-pain-other').value.trim();
+        }
+        if (n === 3) {
+          if (!state.teamSize) { err(steps['2'], 'Pick a team size.'); return; }
+          err(steps['2'], '');
+        }
+        go(n);
+      });
+    });
+
+    // submit
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (steps['3'].hidden) {
+        var visible = !steps['1'].hidden ? '1' : '2';
+        var nextBtn = steps[visible].querySelector('.itk-next');
+        if (nextBtn) nextBtn.click();
+        return;
+      }
+      var name = document.getElementById('itk-name').value.trim();
+      var email = document.getElementById('itk-email').value.trim();
+      if (!name) { err(steps['3'], 'Your name is missing.'); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err(steps['3'], 'That email doesn’t look right.'); return; }
+      err(steps['3'], '');
+      var submitBtn = form.querySelector('.itk-submit');
+      submitBtn.disabled = true;
+      submitBtn.querySelector('.lbl').childNodes[0].textContent = 'sending... ';
+      var payload = {
+        name: name,
+        email: email,
+        phone: document.getElementById('itk-phone').value.trim(),
+        pain: state.pain,
+        painOther: state.painOther,
+        industry: INDUSTRY,
+        company: document.getElementById('itk-company').value.trim(),
+        teamSize: state.teamSize,
+        meta: meta,
+        website: form.querySelector('.itk-hp').value
+      };
+      fetch('/api/intake', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (r) {
+        if (!r.ok) throw new Error('bad status ' + r.status);
+        return r.json();
+      }).then(function () {
+        var book = root.querySelector('.itk-book');
+        book.href = 'https://cal.com/adham-hamza/chat?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email);
+        go('done');
+        track('intake_submitted');
+      }).catch(function () {
+        submitBtn.disabled = false;
+        submitBtn.querySelector('.lbl').childNodes[0].textContent = 'send it ';
+        err(steps['3'], 'Something broke on my end. Try again, or email me at adham@thedarkhorseai.com.');
+        track('intake_error');
+      });
+    });
+  })();
+</script>
+
+<!-- CTA click tracking (form jumps + remaining cal.com links) -->
+<script type="text/javascript">
+  (function () {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="cal.com"], a[href="#intake"]');
+      if (!a || typeof gtag !== 'function') return;
+      var name = a.getAttribute('href') === '#intake' ? 'intake_cta_click' : 'cta_click';
+      gtag('event', name, { location: 'cleaning-lp' });
+    }, true);
+  })();
+</script>
 
 <!-- Magnetic CTA (same behaviour as the landing page) -->
 <script type="text/javascript">
