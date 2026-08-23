@@ -438,7 +438,7 @@ nav.top .right { justify-self: end; display: flex; align-items: center; gap: 16p
 }
 .trust .av {
   width: 26px; height: 26px; border-radius: 50%;
-  background-image: url('assets/founder-256.jpg');
+  background-image: url('assets/founder-brass-800.jpg');
   background-size: cover; background-position: center;
   border: 1.5px solid var(--bg-0);
 }
@@ -1321,7 +1321,7 @@ html[data-surface="light"] .assess-wrap {
 .photo {
   position: relative; width: 100%; aspect-ratio: 1/1;
   border: 1px solid var(--rule);
-  background: var(--bg-1) url('assets/founder-256.jpg') center/cover;
+  background: var(--bg-1) url('assets/founder-brass-800.jpg') center/cover;
   overflow: hidden; border-radius: 4px;
 }
 .photo::after {
