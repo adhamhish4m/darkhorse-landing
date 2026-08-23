@@ -676,13 +676,12 @@ html:not([data-copy]) .copyset[data-c="1"] { display: block; }
 }
 
 /* ============================================================
-   NARRATIVE — scroll story. Messages flow upward, sharpening
-   at the optical center and blurring/fading away (depth of field).
+   NARRATIVE — scroll-lit stack. Normal document flow (no pinning:
+   the pre-2026-08-17 scroll-jacked runway killed scroll depth);
+   JS only toggles .lit as each line crosses mid-viewport.
    ============================================================ */
 .narrative {
   position: relative;
-  /* static since 2026-08-17: the scroll-jacked runway pushed everything below it
-     out of reach (20% avg scroll depth) — same copy, normal flow now. */
   height: auto;
   background: var(--bg-0);
 }
@@ -692,21 +691,25 @@ html:not([data-copy]) .copyset[data-c="1"] { display: block; }
   overflow: visible;
   padding: 96px 0 72px;
 }
-.narr-stack { position: static; display: flex; flex-direction: column; gap: 52px; }
+.narr-stack { position: static; display: flex; flex-direction: column; gap: 40px; }
 .narr-msg {
   position: static;
-  width: min(960px, 88vw);
+  width: min(24em, 88vw);
   margin: 0 auto;
   text-align: center;
   font-family: 'Inter', system-ui, sans-serif;
   font-weight: 600;
-  font-size: clamp(28px, 4vw, 60px);
-  line-height: 1.16;
-  letter-spacing: -0.025em;
+  font-size: clamp(19px, 2.6vw, 30px);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
   color: var(--fg-1);
   text-wrap: balance;
   opacity: 1;
 }
+/* dim state only exists once JS tags the stack .narr-live — no JS, no dimming */
+.narr-live .narr-msg { opacity: 0.22; filter: blur(0.4px); transition: opacity 0.5s ease, filter 0.5s ease; }
+.narr-live .narr-msg.lit { opacity: 1; filter: none; }
+.narr-live .narr-msg.lit .ac { text-shadow: 0 0 18px rgba(198, 161, 91, 0.35); }
 .narr-msg .ac {
   font-family: 'Fraunces', serif;
   font-style: italic;
@@ -1614,13 +1617,14 @@ footer.site-footer {
    so content renders in natural flow (mirrors the reduced-motion path).
    ============================================================ */
 @media (max-width: 1000px) {
-  /* NARRATIVE: stack the messages, no sticky pin, natural height */
+  /* NARRATIVE: stack the messages, no sticky pin, natural height.
+     opacity/filter stay unforced — the scroll-lit effect runs on mobile too. */
   .narrative { height: auto; }
   .narr-sticky { position: static; height: auto; overflow: visible; padding: 44px 0; }
   .narr-stack { position: static; display: flex; flex-direction: column; gap: 34px; }
   .narr-msg {
-    position: static; transform: none !important; opacity: 1 !important;
-    left: auto; top: auto; margin: 0 auto; filter: none !important;
+    position: static; transform: none !important;
+    left: auto; top: auto; margin: 0 auto;
   }
 
   /* PROMISE: stack both slides vertically, words pre-composed */

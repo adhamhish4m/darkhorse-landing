@@ -769,6 +769,23 @@
   })();
 </script>
 
+<script>
+  // Narrative scroll-lit: each line brightens as it crosses the middle of the
+  // viewport. Plain document scroll — only opacity/blur animate (the old pinned
+  // runway killed scroll depth, so no pinning here). Without JS, or with
+  // reduced motion, .narr-live is never added and the text stays fully lit.
+  (function () {
+    var stack = document.querySelector('.narr-stack');
+    if (!stack || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    stack.classList.add('narr-live');
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.target.classList.toggle('lit', e.isIntersecting); });
+    }, { rootMargin: '-30% 0% -30% 0%' });
+    stack.querySelectorAll('.narr-msg').forEach(function (m) { io.observe(m); });
+  })();
+</script>
+
 <!-- ============================ HERO TESTIMONIAL SNAKE + SPOTLIGHT ============================ -->
 <script type="text/javascript">
   (function () {
