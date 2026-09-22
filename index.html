@@ -148,6 +148,18 @@
         "url": "https://cal.com/adham-hamza/the-assessment",
         "availability": "https://schema.org/InStock"
       }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://www.thedarkhorseai.com/#testimonial-michael-gardiner",
+      "name": "Michael Gardiner on working with Dark Horse AI",
+      "description": "Michael Gardiner, founder of DFY Meetings, on two AI projects built by Adham Hamza: targeted list-building automations and a prospecting system for his direct mail service.",
+      "thumbnailUrl": "https://www.thedarkhorseai.com/assets/testimonials/michael-gardiner-poster.jpg",
+      "contentUrl": "https://www.thedarkhorseai.com/assets/testimonials/michael-gardiner-testimonial.mp4",
+      "uploadDate": "2026-09-22",
+      "duration": "PT1M18S",
+      "isFamilyFriendly": true,
+      "publisher": { "@id": "https://www.thedarkhorseai.com/#organization" }
     }
   ]
 }
@@ -439,6 +451,31 @@
   <section class="testify" id="testimonials" data-screen-label="01f Testimonials">
     <div class="wrap">
       <h2 class="testify-title">Don't just take our word for it<span class="champ">.</span></h2>
+
+      <!-- featured video testimonial — click-to-play, video is only fetched on tap (preload=none) -->
+      <figure class="vtesti reveal-up">
+        <div class="vt-media">
+          <video class="vt-video" playsinline preload="none"
+                 poster="assets/testimonials/michael-gardiner-poster.jpg"
+                 src="assets/testimonials/michael-gardiner-testimonial.mp4"></video>
+          <button class="vt-play" type="button" aria-label="Play Michael Gardiner's video testimonial">
+            <span class="vt-play-btn" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+            </span>
+            <span class="vt-play-lbl">Watch <span class="champ">&middot;</span> 1:18</span>
+          </button>
+        </div>
+        <div class="vt-copy">
+          <div class="eyebrow">video testimonial</div>
+          <blockquote>I've been able to give him a very high-level bullet point scope, and he's been able to actually implement that <span class="hl">and then suggest ways to make it better.</span></blockquote>
+          <figcaption>
+            <span class="who">Michael Gardiner</span>
+            <span class="co">Founder, DFY Meetings</span>
+            <span class="vt-badge">Works with Fortune 500 companies</span>
+          </figcaption>
+        </div>
+      </figure>
+
       <div class="testify-grid">
         <figure class="tq reveal-up">
           <blockquote>Adham did excellent work for us. Knowledgeable, easy to communicate with, and genuinely professional. <span class="hl">The process was smooth and the results speak for themselves.</span> I'd absolutely recommend him.</blockquote>
@@ -996,6 +1033,30 @@
         tx = 0; ty = 0;
         if (!reduce && !raf) raf = requestAnimationFrame(tick);
       });
+    });
+  })();
+</script>
+
+<!-- ============================ VIDEO TESTIMONIAL (click to play) ============================ -->
+<script>
+  // preload="none" keeps the 4MB off the initial load; the first tap is what fetches it.
+  (function () {
+    var wrap = document.querySelector('.vtesti');
+    if (!wrap) return;
+    var video = wrap.querySelector('.vt-video');
+    var btn = wrap.querySelector('.vt-play');
+    if (!video || !btn) return;
+    btn.addEventListener('click', function () {
+      btn.hidden = true;
+      video.controls = true;
+      video.play();
+      if (typeof gtag === 'function') gtag('event', 'testimonial_video_play', { person: 'michael_gardiner' });
+    });
+    // back to the poster + play button when it finishes, so the section resets itself
+    video.addEventListener('ended', function () {
+      video.controls = false;
+      video.load();
+      btn.hidden = false;
     });
   })();
 </script>
