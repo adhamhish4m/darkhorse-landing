@@ -160,6 +160,18 @@
       "duration": "PT1M18S",
       "isFamilyFriendly": true,
       "publisher": { "@id": "https://www.thedarkhorseai.com/#organization" }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://www.thedarkhorseai.com/#testimonial-vince-ozonoh",
+      "name": "Vince Ozonoh on working with Dark Horse AI",
+      "description": "Vince Ozonoh, founder of TaskSpaceAI, on the lead generation campaign Adham Hamza built and ran for his business.",
+      "thumbnailUrl": "https://www.thedarkhorseai.com/assets/testimonials/vince-ozonoh-poster.jpg",
+      "contentUrl": "https://www.thedarkhorseai.com/assets/testimonials/vince-ozonoh-testimonial.mp4",
+      "uploadDate": "2026-01-19",
+      "duration": "PT42S",
+      "isFamilyFriendly": true,
+      "publisher": { "@id": "https://www.thedarkhorseai.com/#organization" }
     }
   ]
 }
@@ -476,6 +488,29 @@
         </div>
       </figure>
 
+      <!-- second video — portrait source, so it gets its own 9:16 frame and flips sides -->
+      <figure class="vtesti vtesti--flip reveal-up">
+        <div class="vt-copy">
+          <div class="eyebrow">video testimonial</div>
+          <blockquote>I appreciate your honesty, your hard work and your commitment, because you really showed that <span class="hl">you follow through with what you tell people you can do for them.</span> &hellip; You took it personal to make sure that I succeeded.</blockquote>
+          <figcaption>
+            <span class="who">Vince Ozonoh</span>
+            <span class="co">Founder, TaskSpaceAI</span>
+          </figcaption>
+        </div>
+        <div class="vt-media vt-media--portrait">
+          <video class="vt-video" playsinline preload="none"
+                 poster="assets/testimonials/vince-ozonoh-poster.jpg"
+                 src="assets/testimonials/vince-ozonoh-testimonial.mp4"></video>
+          <button class="vt-play" type="button" aria-label="Play Vince Ozonoh's video testimonial">
+            <span class="vt-play-btn" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+            </span>
+            <span class="vt-play-lbl">Watch <span class="champ">&middot;</span> 0:42</span>
+          </button>
+        </div>
+      </figure>
+
       <div class="testify-grid">
         <figure class="tq reveal-up">
           <blockquote>Adham did excellent work for us. Knowledgeable, easy to communicate with, and genuinely professional. <span class="hl">The process was smooth and the results speak for themselves.</span> I'd absolutely recommend him.</blockquote>
@@ -484,10 +519,6 @@
         <figure class="tq reveal-up">
           <blockquote>Working with Adham has been a game changer. He combined <span class="hl">deep technical knowledge with a strong grasp of compliance-sensitive workflows,</span> helping us build a solution that genuinely reduces admin time and improves accuracy for advisers. Highly recommend.</blockquote>
           <figcaption><span class="who">Alessandro Tolomeo</span><span class="co">Founder, ID Matter AI</span></figcaption>
-        </figure>
-        <figure class="tq reveal-up">
-          <blockquote>I appreciate your honesty, hard work, and commitment. You follow through with exactly what you tell people you can do. <span class="hl">You took it personal to get me results.</span> I look forward to more business with you.</blockquote>
-          <figcaption><span class="who">Vince Ozonoh</span><span class="co">Founder, TaskSpaceAI</span></figcaption>
         </figure>
         <figure class="tq reveal-up">
           <blockquote>You've been very reliable, easy to work with, and <span class="hl">the quality of what you produced exceeded what I expected.</span> I really appreciate the effort you put in. I'd recommend you to anyone.</blockquote>
@@ -1039,24 +1070,36 @@
 
 <!-- ============================ VIDEO TESTIMONIAL (click to play) ============================ -->
 <script>
-  // preload="none" keeps the 4MB off the initial load; the first tap is what fetches it.
+  // preload="none" keeps the video files off the initial load; the first tap is what fetches them.
   (function () {
-    var wrap = document.querySelector('.vtesti');
-    if (!wrap) return;
-    var video = wrap.querySelector('.vt-video');
-    var btn = wrap.querySelector('.vt-play');
-    if (!video || !btn) return;
-    btn.addEventListener('click', function () {
-      btn.hidden = true;
-      video.controls = true;
-      video.play();
-      if (typeof gtag === 'function') gtag('event', 'testimonial_video_play', { person: 'michael_gardiner' });
-    });
-    // back to the poster + play button when it finishes, so the section resets itself
-    video.addEventListener('ended', function () {
-      video.controls = false;
-      video.load();
-      btn.hidden = false;
+    var blocks = [].slice.call(document.querySelectorAll('.vtesti'));
+    var players = [];
+    blocks.forEach(function (wrap) {
+      var video = wrap.querySelector('.vt-video');
+      var btn = wrap.querySelector('.vt-play');
+      if (!video || !btn) return;
+      players.push({ video: video, btn: btn });
+
+      function reset() {
+        video.controls = false;
+        video.load();          // restores the poster
+        btn.hidden = false;
+      }
+
+      btn.addEventListener('click', function () {
+        // only one testimonial plays at a time
+        players.forEach(function (p) { if (p.video !== video && !p.video.paused) p.video.pause(); });
+        btn.hidden = true;
+        video.controls = true;
+        video.play();
+        if (typeof gtag === 'function') {
+          gtag('event', 'testimonial_video_play', {
+            person: (video.currentSrc || video.src).indexOf('vince') > -1 ? 'vince_ozonoh' : 'michael_gardiner'
+          });
+        }
+      });
+
+      video.addEventListener('ended', reset);
     });
   })();
 </script>
