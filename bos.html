@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en" data-surface="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The BOS guide | Dark Horse AI</title>
+<meta name="description" content="Build your own BOS (Business Operating System) on Telegram: an assistant on your phone that knows your business. Free step-by-step guide." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/png" sizes="256x256" href="favicon-256.png" />
+<link rel="canonical" href="https://www.thedarkhorseai.com/bos" />
+<link rel="stylesheet" href="landing.css" />
+<style>
+  .bos { max-width: 720px; margin: 0 auto; padding: 64px var(--gutter) 96px; color: var(--fg-2); line-height: 1.65; font-size: 16px; }
+  .bos .home { display: inline-block; margin-bottom: 36px; color: var(--champagne); }
+  .bos h1 { font-family: 'Inter', sans-serif; font-weight: 700; color: var(--fg-1); font-size: clamp(30px, 6vw, 44px); margin: 0 0 14px; letter-spacing: -0.02em; line-height: 1.1; }
+  .bos h1 em { color: var(--champagne); font-style: normal; }
+  .bos [hidden] { display: none !important; }
+  .bos form { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; max-width: 520px; }
+  .bos label { font-size: 14px; color: var(--fg-1); font-weight: 600; display: flex; flex-direction: column; gap: 6px; }
+  .bos label span { font-weight: 400; opacity: .7; }
+  .bos input, .bos textarea { padding: 13px 15px; font-size: 16px; border-radius: 10px; border: 1px solid rgba(236,231,221,.25); background: transparent; color: var(--fg-1); font-family: inherit; }
+  .bos textarea { min-height: 96px; resize: vertical; }
+  .bos button, .g-btn { display: inline-block; padding: 14px 20px; font-size: 16px; font-weight: 700; border: 0; border-radius: 10px; background: var(--champagne); color: #0F0D0A; cursor: pointer; text-decoration: none; text-align: center; }
+  .bos button[disabled] { opacity: .6; cursor: default; }
+  .bos .err { color: #e07a6b; min-height: 1.2em; font-size: 14px; }
+  .bos .fine { font-size: 13px; opacity: .7; }
+  .bos .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .g-bar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin: 20px 0 8px; }
+  .g-sec { padding: 40px 0 8px; border-top: 1px solid rgba(236,231,221,.12); margin-top: 32px; }
+  .g-kicker { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--champagne); font-weight: 600; }
+  .g-sec h2 { font-family: 'Inter', sans-serif; color: var(--fg-1); font-size: 28px; line-height: 1.2; margin: 6px 0 16px; letter-spacing: -0.01em; }
+  .g-sec h3 { color: var(--fg-1); font-size: 18px; margin: 26px 0 8px; }
+  .g-sec p { margin: 0 0 14px; }
+  .g-sec b { color: var(--fg-1); }
+  .g-sec ul { padding-left: 20px; margin: 0 0 16px; }
+  .g-sec li { margin-bottom: 8px; }
+  .g-sec code { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: .88em; background: rgba(236,231,221,.1); padding: 1px 5px; border-radius: 4px; color: var(--fg-1); }
+  .g-sec pre { position: relative; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 13px; line-height: 1.5; background: #16130f; border: 1px solid rgba(236,231,221,.14); border-radius: 10px; padding: 16px 18px; padding-top: 40px; white-space: pre-wrap; word-break: break-word; color: var(--fg-1); margin: 8px 0 18px; }
+  .g-copy { position: absolute; top: 8px; right: 8px; font: 600 12px/1 'Inter', sans-serif; padding: 7px 10px !important; border-radius: 6px !important; background: rgba(198,161,91,.18) !important; color: var(--champagne) !important; }
+  .g-sec table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 8px 0 18px; }
+  .g-sec th, .g-sec td { text-align: left; padding: 10px 8px; border-bottom: 1px solid rgba(236,231,221,.12); vertical-align: top; }
+  .g-sec th { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--champagne); }
+  .g-sec .steps { list-style: none; counter-reset: s; padding: 0; }
+  .g-sec .steps li { counter-increment: s; position: relative; padding-left: 46px; margin-bottom: 16px; }
+  .g-sec .steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--champagne); color: #0F0D0A; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+  .g-sec .steps li b { display: block; }
+  .g-sec .note { border-left: 3px solid var(--champagne); padding: 4px 0 4px 16px; margin: 18px 0; opacity: .85; font-size: 15px; }
+  .g-sec .callout { background: rgba(198,161,91,.1); border: 1px solid rgba(198,161,91,.3); border-radius: 12px; padding: 16px 18px; margin: 18px 0; }
+  .g-sec .small { font-size: 14px; opacity: .75; }
+  .g-sec .phone { float: right; width: 250px; margin: 0 0 14px 22px; background: #16130f; border: 1px solid rgba(236,231,221,.14); border-radius: 20px; padding: 14px; font-size: 14px; line-height: 1.45; }
+  .g-sec .phone-top { text-align: center; font-size: 12px; opacity: .7; margin-bottom: 8px; }
+  .g-sec .phone .bot { background: rgba(236,231,221,.08); border-radius: 12px; padding: 8px 10px; margin: 6px 26px 6px 0; }
+  .g-sec .phone .me { background: rgba(198,161,91,.25); color: var(--fg-1); border-radius: 12px; padding: 8px 10px; margin: 6px 0 6px 40px; }
+  .g-sec table, .g-sec h3 { clear: both; }
+  .g-cta { text-align: center; padding-bottom: 24px; }
+  .g-cta h2 em { color: var(--champagne); font-style: italic; }
+  @media (max-width: 600px) { .g-sec .phone { float: none; width: auto; margin: 0 0 18px; } }
+</style>
+</head>
+<body>
+<main class="bos">
+  <a class="home" href="/">&larr; Dark Horse AI</a>
+
+  <div id="ask">
+    <h1>Build your own <em>BOS</em></h1>
+    <p>BOS stands for Business Operating System. It's an assistant on your phone that knows your business inside out and takes the boring jobs off your plate.</p>
+    <p>This guide walks you through building one on Telegram, step by step. Plus the exact prompt I use to work out what yours should do first.</p>
+    <form id="f" novalidate>
+      <label>Your name<input id="name" name="name" autocomplete="name" required /></label>
+      <label>Email<input type="email" id="email" name="email" placeholder="you@yourcompany.com" autocomplete="email" required /></label>
+      <label>Phone (optional)<input type="tel" id="phone" name="phone" autocomplete="tel" /></label>
+      <label>Why do you want the guide?<textarea id="why" name="why" placeholder="e.g. I spend every evening on quotes and invoices" required></textarea></label>
+      <div class="hp" aria-hidden="true"><input type="text" id="website" name="website" tabindex="-1" autocomplete="off" /></div>
+      <div class="err" id="err" role="alert"></div>
+      <button type="submit" id="btn">Show me the guide</button>
+      <div class="fine">I'll only use this to send you useful stuff. No spam, unsubscribe any time. See the <a href="/privacy">privacy policy</a>.</div>
+    </form>
+  </div>
+
+  <div id="guide" hidden>
+    <h1>Here's your <em>BOS</em> guide</h1>
+    <p>Read it here, or download the PDF to keep for later.</p>
+    <div class="g-bar"><a class="g-btn" href="/guides/bos-guide.pdf" download="BOS-guide.pdf">Download the PDF</a></div>
+<!--GUIDE-->
+<section class="g-sec"><div class="g-kicker">What this is</div><h2>So what's a BOS?</h2><div class="phone"><div class="phone-top"><b>My BOS</b> · bot</div>
+<div class="bot">Morning! 2 invoices got paid overnight. Sarah at Hollis still hasn't replied to your quote (4 days now). Want me to write her a nudge?</div>
+<div class="me">yeah keep it friendly</div>
+<div class="bot">"Hi Sarah, just checking the quote landed OK. Happy to tweak anything!" Shall I send it?</div></div>
+<p>Most people use AI like Google. You ask it something, close the tab, and the next day it's forgotten everything about you.</p>
+<p>A BOS (Business Operating System) is different. It's an assistant that lives on your phone, in Telegram, and actually knows your business. Your prices, your customers, how you talk, what's going on this week.</p>
+<p>You message it like you'd message someone on your team. And it messages you too. Every morning it tells you what needs you today.</p>
+<p>Once it's up and running, you start handing it jobs. One at a time.</p>
+<h3>What you'll need</h3>
+<table>
+<tr><th>What</th><th>Cost</th></tr>
+<tr><td>Telegram on your phone</td><td>Free</td></tr>
+<tr><td>A Claude account for developers (this is the AI brain)</td><td>Pay as you go. Usually a few pence a message</td></tr>
+<tr><td>A small computer in the cloud that never switches off</td><td>About £4 to £6 a month</td></tr>
+<tr><td>A couple of evenings</td><td>Your time</td></tr>
+</table>
+<div class="note">Never written code before? That's fine. You'll mostly be copying and pasting, and I'll tell you exactly what to paste and where.</div></section>
+<section class="g-sec"><div class="g-kicker">Step 1</div><h2>Let AI interview you</h2>
+<p>Before you build anything, you need to know what's actually eating your time. And the easiest way to find out is to let AI ask you questions.</p>
+<p>Open ChatGPT or Claude (the free one is fine). Copy everything in the box below, paste it in, and just answer.</p>
+<p><b>Tip:</b> press the microphone and talk instead of typing. You'll say way more, and the more you say, the better your plan.</p>
+<pre class="" data-copy>You&#x27;re an operations consultant who helps small business owners get their time back with automation and AI. Interview me about my business, then give me a plan for my BOS (Business Operating System): an AI assistant on Telegram that knows my business.
+
+How to run the interview:
+- Ask me ONE question at a time and wait for my answer.
+- Keep questions short and simple. No jargon.
+- If my answer is vague, dig in. Ask for a real example from last week, how long it took and how often it happens.
+- Don&#x27;t assume anything about my business. If you don&#x27;t know, ask.
+
+Cover these, in this order:
+1. The business: what we sell, who buys it, how many people work here, how customers find us and pay us.
+2. My week: walk me through a normal week, day by day. Where do the hours go?
+3. The jobs that keep coming back: quotes, invoices, chasing payments, replying to enquiries, booking things in, reports, copying stuff between apps, follow-ups, reviews.
+4. My tools: every app, spreadsheet, inbox and bit of paper I use, and what lives where.
+5. What I hate doing: the stuff I put off, or would hand to someone else tomorrow.
+6. What only I should do: where my judgement, my voice or my relationships really matter.
+7. My numbers: what I check to know the business is OK, and where I check it.
+8. The dream: what I&#x27;d do with 10 extra hours a week.
+
+When you&#x27;ve got enough (usually 15 to 25 questions), stop and give me:
+
+PART 1: Where my time goes
+A table of every job that keeps coming back: the job, hours a week, how often, which apps it touches.
+
+PART 2: Automate, AI, both, or keep it
+Put every job in one bucket, with one line saying why:
+- AUTOMATE: same steps every time. A simple rule can do it.
+- AI: messy stuff (emails, notes, voice messages) that needs reading, writing or judgement.
+- BOTH: AI handles the messy bit, automation does the rest.
+- KEEP IT: my reputation or relationships are on the line, so I keep doing it.
+
+PART 3: My memory file
+Write a file called business.md that my assistant will read before every reply. Sections: The business, Customers, Prices, How I talk (with 3 example messages in my voice), How things get done, Rules (what it must never do), Right now (what&#x27;s going on this month). Only use what I told you. Write [FILL IN] for anything I didn&#x27;t say.
+
+PART 4: My morning brief
+The 5 to 8 lines I&#x27;d want on my phone every morning, and which app each line&#x27;s info lives in.
+
+PART 5: What to build first
+Rank the jobs by hours saved against how easy they are to build. Pick ONE and tell me why.
+
+PART 6: The next three jobs to hand over, in order, one line each.
+
+Be honest. If something isn&#x27;t worth automating, say so. Don&#x27;t use AI where a simple rule does the job.
+
+Start now with your first question.</pre>
+<div class="note">Give it 20 to 30 minutes. At the end you'll get a plan. Save it! Part 3 is your bot's memory (Step 4) and Part 4 is your morning brief.</div></section>
+<section class="g-sec"><div class="g-kicker">Step 2</div><h2>Make your bot on Telegram</h2>
+<p>Telegram has its own bot for making bots. It's called BotFather (yes, really).</p>
+<ol class="steps">
+<li><b>Open Telegram and search for @BotFather.</b>Make sure it's got the blue tick.</li>
+<li><b>Send it <code>/newbot</code></b>It'll ask for a name (like "My BOS") and then a username that ends in "bot" (like "jos_cleaning_bot").</li>
+<li><b>Copy the token it gives you.</b>It's a long code that looks like <code>123456789:AAH...</code>. Keep it secret! Anyone with it can control your bot.</li>
+<li><b>Get your chat ID.</b>Search for <code>@userinfobot</code>, say hi, and it replies with a number. That's you. Your bot will only ever talk to this number, so nobody else can use it.</li>
+</ol></section>
+<section class="g-sec"><div class="g-kicker">Step 3</div><h2>Give it a brain (Claude)</h2>
+<p>Your bot needs an AI to do the thinking. We'll use Claude.</p>
+<ol class="steps">
+<li><b>Go to console.anthropic.com and sign up.</b>This is the developer side of Claude. It's separate from a normal Claude subscription.</li>
+<li><b>Add a bit of credit, and set a monthly limit.</b>£10 is loads to start with. The limit means it can never surprise you with a big bill.</li>
+<li><b>Create an API key and copy it.</b>An API key is basically a password that lets your bot use Claude. Same rule: keep it secret.</li>
+</ol>
+<div class="callout"><b>You've now got three things:</b> your bot token, your chat ID and your Claude key. Pop them somewhere safe, like your password manager or a note only you can see.</div></section>
+<section class="g-sec"><div class="g-kicker">Step 4</div><h2>Give it a memory</h2>
+<p>A bot that doesn't know your business gives boring, generic answers. So we give it a memory.</p>
+<p>Its memory is just a text file called <code>business.md</code>. It reads the whole thing before every reply. The better this file is, the smarter your bot is.</p>
+<p>Good news: the interview already wrote it for you (Part 3). Fill in anything marked <code>[FILL IN]</code> and read it back. It should sound like you're briefing someone on their first day. Something like this:</p>
+<pre class="" data-copy># The business
+Window cleaning in Leamington and Warwick. 2 vans, 4 of us.
+
+# Prices
+3-bed semi: £18 every 4 weeks. Conservatory roof: £45.
+
+# How I talk
+Friendly, short, first names. Never &quot;Dear Sir&quot;.
+Example: &quot;Hi Jo, we&#x27;re with you Tuesday morning. Shout if the gate&#x27;s locked!&quot;
+
+# Rules
+Never give a price that isn&#x27;t on this page. Never promise a date.
+Anything a customer will see, show me first.
+
+# Right now
+6 invoices from October still unpaid. Hiring a 5th cleaner.</pre>
+<div class="note">Keep it up to date. Prices change? Change the file. An out-of-date memory is worse than none.</div></section>
+<section class="g-sec"><div class="g-kicker">Step 5</div><h2>Rent a computer that never sleeps</h2>
+<p>Your bot needs to run somewhere 24/7. Your laptop won't do, because it stops when you close the lid.</p>
+<p>So we rent a tiny computer in the cloud. It's called a server (or a VPS) and it's cheaper than a Netflix subscription.</p>
+<ol class="steps">
+<li><b>Pick a provider.</b>Hetzner, DigitalOcean and Hostinger all have plans for about £4 to £6 a month. The smallest plan is plenty.</li>
+<li><b>Choose Ubuntu when it asks.</b>That's the type of system it runs.</li>
+<li><b>Write down two things it gives you.</b>Your server's IP address (a number like <code>123.45.67.89</code>) and the root password.</li>
+</ol>
+<div class="note">Root just means the main admin account. You'll log in as root in the next step.</div></section>
+<section class="g-sec"><div class="g-kicker">Step 6</div><h2>Set it up</h2>
+<p>Now we put everything onto your server. Open the Terminal app on your Mac (on Windows, open PowerShell) and type these one line at a time. Press Enter after each one.</p>
+<pre class="" data-copy>ssh root@YOUR-SERVER-IP
+apt update &amp;&amp; apt install -y python3-venv nano
+mkdir -p /root/bos &amp;&amp; cd /root/bos
+python3 -m venv venv
+venv/bin/pip install anthropic &quot;python-telegram-bot[job-queue]&quot;
+nano business.md
+nano bot.py
+nano .env
+chmod 600 .env</pre>
+<p>A few of those lines open a little text editor called nano. Here's what to paste into each one:</p>
+<ul>
+<li><b><code>nano business.md</code></b> paste your memory file from Step 4.</li>
+<li><b><code>nano bot.py</code></b> paste the code from the next step.</li>
+<li><b><code>nano .env</code></b> paste this, with your three keys swapped in:</li>
+</ul>
+<pre class="" data-copy>TELEGRAM_TOKEN=paste-your-bot-token-here
+MY_CHAT_ID=paste-your-chat-id-here
+ANTHROPIC_API_KEY=paste-your-claude-key-here</pre>
+<p>To save and close nano: press <b>Ctrl + O</b>, then <b>Enter</b>, then <b>Ctrl + X</b>.</p>
+<div class="note">The first line asks for your server password. When you type it, nothing shows up on screen. That's normal, just type it and press Enter.</div></section>
+<section class="g-sec"><div class="g-kicker">Step 7</div><h2>The code</h2>
+<p>This is the whole thing. About 40 lines. It answers your messages using its memory, ignores anyone who isn't you, and sends you a brief every morning at 7am.</p>
+<p>You don't need to understand every line. Just copy it all into <code>bot.py</code>.</p>
+<pre class="code" data-copy>import os, datetime
+from zoneinfo import ZoneInfo
+import anthropic
+from telegram import Update
+from telegram.ext import Application, ContextTypes, MessageHandler, filters
+
+# Your three keys. They live in the .env file, never in here.
+TOKEN = os.environ[&quot;TELEGRAM_TOKEN&quot;]
+MY_CHAT_ID = int(os.environ[&quot;MY_CHAT_ID&quot;])
+claude = anthropic.AsyncAnthropic()  # finds ANTHROPIC_API_KEY by itself
+
+# Your bot&#x27;s memory: everything it knows about your business.
+MEMORY = open(&quot;business.md&quot;).read()
+history = []
+
+async def ask(text):
+    history.append({&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: text})
+    try:
+        r = await claude.messages.create(
+            model=&quot;claude-opus-5-5&quot;,
+            max_tokens=4000,
+            system=&quot;You are my business assistant. Keep it short and friendly.\n\n&quot; + MEMORY,
+            messages=history[-20:],  # remembers the last 10 back-and-forths
+        )
+    except anthropic.APIError:
+        history.pop()
+        return &quot;Something went wrong on Claude&#x27;s side. Try again in a minute.&quot;
+    reply = next((b.text for b in r.content if b.type == &quot;text&quot;), &quot;&quot;)
+    history.append({&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: reply})
+    return reply[:4000]  # Telegram messages can&#x27;t be longer than this
+
+async def on_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.effective_chat.id != MY_CHAT_ID:
+        return  # strangers get ignored
+    await update.message.reply_text(await ask(update.message.text))
+
+async def morning_brief(context: ContextTypes.DEFAULT_TYPE):
+    text = await ask(&quot;Write my morning brief: what needs my attention today, in 5 short lines.&quot;)
+    await context.bot.send_message(MY_CHAT_ID, text)
+
+app = Application.builder().token(TOKEN).build()
+app.add_handler(MessageHandler(filters.TEXT &amp; ~filters.COMMAND, on_message))
+app.job_queue.run_daily(morning_brief, time=datetime.time(7, 0, tzinfo=ZoneInfo(&quot;Europe/London&quot;)))
+app.run_polling()
+</pre>
+<p class="small">Want the brief at 6:30 instead? Change the <code>7, 0</code> near the bottom to <code>6, 30</code>.</p></section>
+<section class="g-sec"><div class="g-kicker">Step 8</div><h2>Switch it on</h2>
+<p>Last bit. We tell the server to run your bot all the time, and to restart it by itself if it ever crashes.</p>
+<p>Type this to open a new file:</p>
+<pre class="" data-copy>nano /etc/systemd/system/bos.service</pre>
+<p>Paste this in, then save and close (Ctrl + O, Enter, Ctrl + X):</p>
+<pre class="" data-copy>[Unit]
+Description=My BOS
+After=network-online.target
+
+[Service]
+WorkingDirectory=/root/bos
+EnvironmentFile=/root/bos/.env
+ExecStart=/root/bos/venv/bin/python bot.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target</pre>
+<p>Then switch it on:</p>
+<pre class="" data-copy>systemctl enable --now bos</pre>
+<p>Now open Telegram and say hi to your bot. If it answers... you've got a BOS! 🎉</p>
+<div class="callout"><b>Not answering?</b> Type <code>journalctl -u bos -n 50</code> and you'll see what went wrong. Copy that into ChatGPT or Claude and ask what to fix. It'll usually spot it straight away (it's normally a typo in one of the keys).</div></section>
+<section class="g-sec"><div class="g-kicker">Step 9</div><h2>Teach it new tricks</h2>
+<p>Right now your bot only knows what's in its memory file. It gets properly useful when it can see your real stuff: your invoices, your inbox, your calendar.</p>
+<h3>Connect your apps</h3>
+<p>Look at Part 4 of your interview. It told you which app each line of your morning brief lives in. Most apps (Xero, QuickBooks, Gmail, Google Calendar and so on) have an API, which is just a door that lets other software in.</p>
+<p>The easiest way to add one: open ChatGPT or Claude, paste in your <code>bot.py</code>, and ask something like:</p>
+<pre data-copy>Add a function to this bot that gets yesterday's paid invoices from Xero and adds them to my morning brief. Explain each step simply, I'm not a developer.</pre>
+<p>It'll walk you through it, including how to get the key for that app.</p>
+<h3>Hand it jobs, one at a time</h3>
+<ol class="steps">
+<li><b>Start with the job your interview picked.</b>Not five jobs. One.</li>
+<li><b>Write down how you do it now, step by step.</b>Then mark which steps are always the same (automation) and which need thinking (AI).</li>
+<li><b>Make it draft, not send.</b>Anything a customer will see, it shows you first and you say yes.</li>
+<li><b>Try it on pretend data for a week.</b>Then count the hours it saved you, and pick the next job.</li>
+</ol></section>
+<section class="g-sec"><div class="g-kicker">Keep it safe</div><h2>A few rules I never break</h2>
+<ul>
+<li><b>It only talks to you.</b> That chat ID check in the code is there for a reason. Don't take it out.</li>
+<li><b>Keys stay secret.</b> They live in the .env file. Never in the code, never in a chat, never in an email.</li>
+<li><b>Set a spending limit on Claude.</b> Do it before anything else.</li>
+<li><b>You approve anything a customer sees.</b> The AI writes it. You decide if it goes.</li>
+<li><b>The AI doesn't do the maths.</b> Prices and totals should come from your own records, not from the AI guessing.</li>
+<li><b>Let it look before it touches.</b> Give it read-only access to an app first. Let it do things once you trust it.</li>
+<li><b>Some things stay yours.</b> Replying to a bad review, a tricky conversation with a customer, anything with your name on it.</li>
+</ul>
+<div class="note">If your morning brief doesn't turn up one day, something's broken. That's your cue to check <code>journalctl -u bos -n 50</code>.</div></section>
+<section class="g-sec g-cta"><h2>Want me to just <em>build it</em> for you?</h2><p>Honestly, this is what I do all day. I'll do the interview with you, write the memory, connect your apps and get your first jobs running. You just message it.</p><a class="g-btn" href="https://cal.com/adham-hamza/chat">Book a quick call</a></section>
+<!--/GUIDE-->
+  </div>
+</main>
+<script>
+(function () {
+  var KEY = 'bos-guide-unlocked';
+  var ask = document.getElementById('ask'), guide = document.getElementById('guide');
+  function show() {
+    ask.hidden = true; guide.hidden = false; window.scrollTo(0, 0);
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  }
+  try { if (localStorage.getItem(KEY) === '1') show(); } catch (e) {}
+
+  // Copy buttons on every code / prompt box
+  Array.prototype.forEach.call(document.querySelectorAll('pre[data-copy]'), function (pre) {
+    var original = pre.textContent;
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'g-copy'; b.textContent = 'Copy';
+    b.addEventListener('click', function () {
+      var text = original;
+      var done = function () { b.textContent = 'Copied!'; setTimeout(function () { b.textContent = 'Copy'; }, 1500); };
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
+    });
+    pre.insertBefore(b, pre.firstChild);
+  });
+
+  var q = new URLSearchParams(location.search);
+  var source = (q.get('src') || 'direct').toLowerCase();
+  var f = document.getElementById('f'), btn = document.getElementById('btn'), err = document.getElementById('err');
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    err.textContent = '';
+    var v = function (id) { return document.getElementById(id).value.trim(); };
+    var body = { name: v('name'), email: v('email'), phone: v('phone'), why: v('why'), website: v('website'), source: source };
+    if (!body.name) { err.textContent = 'Pop your name in.'; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) { err.textContent = "That email doesn't look right."; return; }
+    if (body.why.length < 3) { err.textContent = 'Tell me a bit about why you want it.'; return; }
+    btn.disabled = true; btn.textContent = 'One sec...';
+    fetch('/api/bos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+      .then(function (d) {
+        if (d && d.ok) return show();
+        err.textContent = (d && d.error) || 'Something went wrong. Try again.';
+        btn.disabled = false; btn.textContent = 'Show me the guide';
+      })
+      .catch(function () {
+        err.textContent = 'No connection. Try again.';
+        btn.disabled = false; btn.textContent = 'Show me the guide';
+      });
+  });
+})();
+</script>
+</body>
+</html>
