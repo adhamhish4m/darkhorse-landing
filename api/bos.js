@@ -1,6 +1,7 @@
 // BOS guide gate -> Brevo contact (SOURCE_WORD=BOS) + Telegram ping with name, phone and their reason.
 // Dependency-free CJS like intake.js / subscribe.js: package.json is .vercelignored, so Node builtins only.
-// Env: BREVO_API_KEY, BREVO_LIST_ID (default 3), TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID.
+// Env: BREVO_API_KEY, BREVO_LIST_ID (default 3), TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID,
+// optional TELEGRAM_EVENTS_TOPIC_ID / TELEGRAM_LEADS_TOPIC_ID (forum topics).
 // A lead counts as saved if EITHER Brevo or Telegram took it, so one outage never loses someone.
 
 var SOURCES = { leamington: 1, linkedin: 1, instagram: 1, youtube: 1, tiktok: 1, direct: 1 };
@@ -58,6 +59,8 @@ async function toTelegram(d) {
   var token = process.env.TELEGRAM_BOT_TOKEN;
   var chat = process.env.TELEGRAM_CHAT_ID;
   if (!token || !chat) throw new Error('telegram env missing');
+  // Event sign-ups land in the networking-events topic, everything else in the leads topic (if set).
+  var topic = d.source === 'leamington' ? process.env.TELEGRAM_EVENTS_TOPIC_ID : process.env.TELEGRAM_LEADS_TOPIC_ID;
   var text = '📘 BOS guide sign-up (' + d.source + ')\n' +
     'Name: ' + d.name + '\n' +
     'Email: ' + d.email + '\n' +
@@ -66,7 +69,10 @@ async function toTelegram(d) {
   var r = await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: chat, text: text, disable_web_page_preview: true }),
+    body: JSON.stringify(Object.assign(
+      { chat_id: chat, text: text, disable_web_page_preview: true },
+      topic ? { message_thread_id: parseInt(topic, 10) } : {}
+    )),
   });
   if (!r.ok) throw new Error('telegram ' + r.status);
 }
