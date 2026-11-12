@@ -29,7 +29,6 @@
   <a class="home" href="/">&larr; Dark Horse AI</a>
   <div id="ask">
     <h1 id="title">Get the free guide</h1>
-    <p id="sub">Drop your email and I'll send it straight over. No spam, one email a week at most, unsubscribe any time.</p>
     <form id="f" novalidate>
       <input type="email" id="email" name="email" placeholder="you@yourcompany.com" autocomplete="email" required />
       <div class="hp" aria-hidden="true"><input type="text" id="website" name="website" tabindex="-1" autocomplete="off" /></div>
@@ -53,6 +52,8 @@
     RFP: 'The guide to winning cleaning RFPs'
   };
   var q = new URLSearchParams(location.search);
+  // Old Leamington QR codes (PROMPT / BOSS) and BOS go to the BOS guide page.
+  if (/^(BOS|BOSS|PROMPT)$/i.test(q.get('w') || '')) { location.replace('/bos?src=' + encodeURIComponent(q.get('p') || 'direct')); return; }
   var word = (q.get('w') || '').toUpperCase();
   var platform = (q.get('p') || 'direct').toLowerCase();
   if (TITLES[word]) {
